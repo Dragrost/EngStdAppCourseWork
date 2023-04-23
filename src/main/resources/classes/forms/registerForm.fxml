@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="543.0" prefWidth="516.0" style="-fx-background-image: url(&quot; file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.RegisterFormController">
+   <children>
+      <ImageView fitHeight="543.0" fitWidth="516.0">
+         <image>
+            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="115.0" layoutY="65.0" prefHeight="413.0" prefWidth="287.0" style="-fx-background-color: WHITE; -fx-background-radius: 35;">
+         <children>
+            <Button fx:id="regButton" layoutX="42.0" layoutY="318.0" mnemonicParsing="false" onAction="#clickReg" prefHeight="44.0" prefWidth="204.0" style="-fx-background-radius: 100;" text="Зарегестрироваться" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Button>
+            <Label layoutX="48.0" layoutY="31.0" prefHeight="44.0" prefWidth="192.0" text="Регистрация" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="login" alignment="TOP_LEFT" layoutX="62.0" layoutY="123.0" prefHeight="25.0" prefWidth="192.0" promptText="Логин" style="-fx-background-color: transparent;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </TextField>
+            <Separator layoutX="34.0" layoutY="148.0" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: BLACK;" />
+            <PasswordField fx:id="password" layoutX="62.0" layoutY="181.0" prefHeight="25.0" prefWidth="192.0" promptText="Пароль" style="-fx-background-color: transparent;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="confirmPassword" layoutX="62.0" layoutY="239.0" prefHeight="25.0" prefWidth="192.0" promptText="Повторите пароль" style="-fx-background-color: transparent;">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </PasswordField>
+            <Separator layoutX="34.0" layoutY="264.0" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: BLACK;" />
+            <Separator layoutX="34.0" layoutY="206.0" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: BLACK;" />
+            <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="126.0">
+               <image>
+                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/logImg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="184.0">
+               <image>
+                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/regImg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="242.0">
+               <image>
+                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/regImg.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="24.0" layoutY="375.0" prefHeight="17.0" prefWidth="204.0" text="Уже зарегистрировались? Нажмите">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="ChangeFormButton" layoutX="222.0" layoutY="372.0" mnemonicParsing="false" onAction="#ClickToChangeForm" style="-fx-background-color: transparent;" text="cюда" textFill="#0092ff">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fx:id="errorInput" fill="RED" layoutX="34.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="220.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

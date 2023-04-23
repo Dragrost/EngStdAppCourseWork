@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="688.0" prefWidth="549.0" style="-fx-background-image: url(&quot; file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.MainMenuController">
+   <children>
+      <ImageView fitHeight="688.0" fitWidth="561.0" layoutY="7.0">
+         <image>
+            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="33.0" layoutY="35.0" prefHeight="625.0" prefWidth="495.0" style="-fx-background-color: WHITE; -fx-background-radius: 50;">
+         <children>
+            <AnchorPane layoutX="208.0" layoutY="14.0" prefHeight="200.0" prefWidth="273.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 30;">
+               <children>
+                  <Label layoutX="84.0" layoutY="14.0" prefHeight="36.0" prefWidth="105.0" text="Привет! " textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Text layoutX="8.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your name" textAlignment="CENTER" wrappingWidth="256.13671875">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                     <fill>
+                        <RadialGradient centerX="0.494475138121547" centerY="0.41469194312796204" focusAngle="-2.12" radius="0.8333333333333334">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9605262875556946" green="0.4482456147670746" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Text>
+                  <Button fx:id="leaveButton" layoutX="64.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="47.0" prefWidth="144.0" text="Выйти из аккаунта">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button fx:id="myProgress" layoutX="111.0" layoutY="249.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="273.0" text="Результат" />
+            <Button fx:id="generalTests" layoutX="111.0" layoutY="330.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="273.0" text="Пройти готовый тест" />
+            <Button fx:id="randomTest" layoutX="111.0" layoutY="413.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="273.0" text="Сгенерировать тест" />
+            <Button fx:id="deleteAcc" layoutX="111.0" layoutY="494.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="273.0" text="Удалить аккаунт" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
