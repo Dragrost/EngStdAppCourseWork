@@ -66,23 +66,27 @@ public class RegisterFormController {
             try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
             {
                 String request = "Registration," + login.getText() +  "," + password.getText();
-                System.out.println("Request " + request);
+                //System.out.println("Request " + request);
                 communication.writeLine(request);
 
                 String response = communication.readLine();
-                System.out.println("Response: " + response);
-
-                Stage stage = (Stage) regButton.getScene().getWindow();
-                stage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 561, 695);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
-
+                if (response.equals("errorKey"))
+                    errorInput.setText("Данный пользователь уже существует!");
+                else {
+                    Stage stage = (Stage) regButton.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                }
             }
             catch (IOException e) {
                 errorInput.setText("Нет соединения с сервером!");
+            }
+            catch (RuntimeException exx){
+                errorInput.setText("Такой пользователь уже существует!");
             }
         }
     }
