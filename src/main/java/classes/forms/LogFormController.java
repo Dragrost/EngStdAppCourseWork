@@ -3,6 +3,8 @@ package classes.forms;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -82,13 +84,31 @@ public class LogFormController {
         else if (password.getText().equals(""))
             errorInput.setText("Заполните поле 'Пароль!'");
         else {
-            Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
-            stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 561, 695);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+            try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
+            {
+                String request = "Login," + login.getText() +  "," + password.getText();
+                communication.writeLine(request);
+
+                String response = communication.readLine();
+                if (response.equals("errorKey"))
+                    errorInput.setText("Данный пользователь не зарегестрирован!");
+                else if (response.equals("wrongPassword"))
+                    errorInput.setText("Введён неверный пароль!");
+                else {
+                    Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
+                    stage.close();
+                    FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                    MainMenuController controllerEditBook = fxmlLoader.getController();
+                    controllerEditBook.getData(login.getText());
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+            }
+            catch (IOException e) {
+                errorInput.setText("Нет соединения с сервером!");
+            }
         }
     }
 

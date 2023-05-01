@@ -3,11 +3,14 @@ package classes.forms;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenuController {
@@ -28,11 +31,19 @@ public class MainMenuController {
     private Button leaveButton;
 
     @FXML
+    private Text login;
+    @FXML
     private Button myProgress;
 
     @FXML
     private Button randomTest;
 
+
+    @FXML
+    public void getData(String login)
+    {
+        this.login.setText(login);
+    }
 
     @FXML
     void clickToLeave(ActionEvent event) throws IOException {
@@ -52,6 +63,7 @@ public class MainMenuController {
         assert leaveButton != null : "fx:id=\"leaveButton\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
         assert myProgress != null : "fx:id=\"myProgress\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
         assert randomTest != null : "fx:id=\"randomTest\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
+
     }
 
 }

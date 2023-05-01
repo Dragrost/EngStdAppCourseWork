@@ -8,6 +8,7 @@ import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -66,7 +67,6 @@ public class RegisterFormController {
             try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
             {
                 String request = "Registration," + login.getText() +  "," + password.getText();
-                //System.out.println("Request " + request);
                 communication.writeLine(request);
 
                 String response = communication.readLine();
@@ -77,6 +77,8 @@ public class RegisterFormController {
                     stage.close();
                     FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                    MainMenuController controllerEditBook = fxmlLoader.getController(); //получаем контроллер для второй формы
+                    controllerEditBook.getData(login.getText());
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();
@@ -84,9 +86,6 @@ public class RegisterFormController {
             }
             catch (IOException e) {
                 errorInput.setText("Нет соединения с сервером!");
-            }
-            catch (RuntimeException exx){
-                errorInput.setText("Такой пользователь уже существует!");
             }
         }
     }
