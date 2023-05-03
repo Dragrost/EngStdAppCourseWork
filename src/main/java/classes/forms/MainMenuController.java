@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 public class MainMenuController {
 
     @FXML
+    private Button allWords;
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -51,6 +53,16 @@ public class MainMenuController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("logForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 516, 543);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void genRandTest(ActionEvent event) throws IOException {
+        Stage stage = (Stage) randomTest.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("testForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 771, 538);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

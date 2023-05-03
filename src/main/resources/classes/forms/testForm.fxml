@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="538.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.testFormController">
+   <children>
+      <Label fx:id="question" layoutX="117.0" layoutY="106.0" prefHeight="57.0" prefWidth="317.0" text="Label" />
+   </children>
+</AnchorPane>
