@@ -46,13 +46,19 @@ public class testFormController {
     @FXML
     private int questionWord = 0;
     @FXML
-    private int randomWord = MAX_QUESTIONS-1;
+    private int randomWord = MAX_QUESTIONS - 1;
     @FXML
-    private ArrayList<String> engWords = new ArrayList<>();
+    private final ArrayList<String> engWords = new ArrayList<>();
     @FXML
-    private ArrayList<String> rusWords = new ArrayList<>();
+    private final ArrayList<String> rusWords = new ArrayList<>();
     @FXML
     private int currentQuestionNum = 0;
+    @FXML
+    private int correctAnswers = 0;
+    @FXML
+    private String correctAnswersWords = "";
+    @FXML
+    private String response = "";
     @FXML
     private Button thirdAns;
 
@@ -68,9 +74,8 @@ public class testFormController {
     }
 
     @FXML
-    private void arrangeEngWords()
-    {
-        int rand = (int)(Math.random() * 4) + 1;
+    private void arrangeEngWords() {
+        int rand = (int) (Math.random() * 4) + 1;
 
         question.setText("How does word '" + engWords.get(questionWord) + "' translate into Russian?");
 
@@ -80,26 +85,17 @@ public class testFormController {
         fourAns.setText(rusWords.get(randomWord++));
 
         randomWord--;
-        switch (rand)
-        {
-            case 1:
-                firstAns.setText(rusWords.get(questionWord++));
-                break;
-            case 2:
-                secAns.setText(rusWords.get(questionWord++));
-                break;
-            case 3:
-                thirdAns.setText(rusWords.get(questionWord++));
-                break;
-            case 4:
-                fourAns.setText(rusWords.get(questionWord++));
-                break;
+        switch (rand) {
+            case 1 -> firstAns.setText(rusWords.get(questionWord++));
+            case 2 -> secAns.setText(rusWords.get(questionWord++));
+            case 3 -> thirdAns.setText(rusWords.get(questionWord++));
+            case 4 -> fourAns.setText(rusWords.get(questionWord++));
         }
     }
+
     @FXML
-    private void arrangeRusWords()
-    {
-        int rand = (int)(Math.random() * 4) + 1;
+    private void arrangeRusWords() {
+        int rand = (int) (Math.random() * 4) + 1;
 
         question.setText("Как переводится слово '" + rusWords.get(questionWord) + "' на английский язык?");
 
@@ -109,54 +105,68 @@ public class testFormController {
         fourAns.setText(engWords.get(randomWord++));
 
         randomWord--;
-        switch (rand)
-        {
-            case 1:
-                firstAns.setText(engWords.get(questionWord++));
-                break;
-            case 2:
-                secAns.setText(engWords.get(questionWord++));
-                break;
-            case 3:
-                thirdAns.setText(engWords.get(questionWord++));
-                break;
-            case 4:
-                fourAns.setText(engWords.get(questionWord++));
-                break;
+        switch (rand) {
+            case 1 -> firstAns.setText(engWords.get(questionWord++));
+            case 2 -> secAns.setText(engWords.get(questionWord++));
+            case 3 -> thirdAns.setText(engWords.get(questionWord++));
+            case 4 -> fourAns.setText(engWords.get(questionWord++));
         }
     }
+
     @FXML
-    private void arrangeAns()
-    {
-        questionNumLabel.setText(String.valueOf(currentQuestionNum+1) + "/" + String.valueOf(MAX_QUESTIONS));
-        int rand = (int)(Math.random() * 2) + 1;
+    private void arrangeAns() {
+        questionNumLabel.setText(currentQuestionNum + 1 + "/" + MAX_QUESTIONS);
+        int rand = (int) (Math.random() * 2) + 1;
         if (rand == 1)
             arrangeEngWords();
         else
             arrangeRusWords();
         currentQuestionNum++;
     }
+
+    @FXML
+    private void checkCorrectAnswers(MouseEvent event)
+    {
+        String chosenButtWord = ((Button)event.getSource()).getText();
+
+        if ((engWords.indexOf(chosenButtWord) == currentQuestionNum-1) || (rusWords.indexOf(chosenButtWord) == currentQuestionNum-1)) {
+            correctAnswers++;
+            correctAnswersWords += "," + engWords.get(currentQuestionNum-1);
+        }
+    }
+
     @FXML
     void checkAnswers(MouseEvent event) throws IOException {
         if (currentQuestionNum == MAX_QUESTIONS)
         {
-            //(Stage) quit.getScene().getWindow();
-            Stage stage = new Stage();
+            checkCorrectAnswers(event);
+            System.out.println(correctAnswers);
+            System.out.println(correctAnswersWords);
+
+            requestToServer("AddWordsProgress" + this.correctAnswersWords);
+
+            Stage stage = (Stage) quit.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 249, 320);
+            progressInfoFormController controllerEditBook = fxmlLoader.getController();
+            controllerEditBook.setData("RandomTest",correctAnswers,MAX_QUESTIONS);
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         }
         else
+        {
+            checkCorrectAnswers(event);
             arrangeAns();
+        }
+
     }
 
     @FXML
     private void processResponse(String response)
     {
-        String strings[] = response.split("!");
+        String[] strings = response.split("!");
         for (int i = 0; i < strings.length;i++) {
             if ((i % 2 == 0)) {
                 engWords.add(strings[i]);
@@ -166,6 +176,18 @@ public class testFormController {
         }
         arrangeAns();
     }
+
+    private void requestToServer(String request)
+    {
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
+        {
+            communication.writeLine(request);
+            response = communication.readLine();
+        }
+        catch (IOException e) {
+            System.out.println("Нет соединения с сервером!");
+        }
+    }
     @FXML
     void initialize() {
         assert firstAns != null : "fx:id=\"firstAns\" was not injected: check your FXML file 'testForm.fxml'.";
@@ -174,17 +196,7 @@ public class testFormController {
         assert question != null : "fx:id=\"question\" was not injected: check your FXML file 'testForm.fxml'.";
         assert secAns != null : "fx:id=\"secAns\" was not injected: check your FXML file 'testForm.fxml'.";
         assert thirdAns != null : "fx:id=\"thirdAns\" was not injected: check your FXML file 'testForm.fxml'.";
-        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
-        {
-            String request = "RandomGeneration";
-            communication.writeLine(request);
-            String response = communication.readLine();
-            processResponse(response);
-            System.out.println(response);
-        }
-        catch (IOException e) {
-            System.out.println("Нет соединения с сервером!");
-        }
+        requestToServer("RandomGeneration");
+        processResponse(response);
     }
-
 }

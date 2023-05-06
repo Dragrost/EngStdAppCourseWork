@@ -37,6 +37,14 @@ public class progressInfoFormController {
     }
 
     @FXML
+    public void setData(String operation, int correctAnswers, int maxAnswers)
+    {
+        switch (operation){
+            case "RandomTest" -> infoText.setText("Всего правильных ответов - " + correctAnswers + "/" + maxAnswers);
+        }
+    }
+
+    @FXML
     void initialize() {
         assert infoText != null : "fx:id=\"infoText\" was not injected: check your FXML file 'progressInfoForm.fxml'.";
         assert returnBack != null : "fx:id=\"returnBack\" was not injected: check your FXML file 'progressInfoForm.fxml'.";
