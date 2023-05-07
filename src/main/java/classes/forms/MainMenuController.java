@@ -38,13 +38,29 @@ public class MainMenuController {
     private Button myProgress;
 
     @FXML
+    private String ID = "";
+    @FXML
     private Button randomTest;
 
-
     @FXML
-    public void getData(String login)
+    private void getLogin()
     {
-        this.login.setText(login);
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
+        {
+            String request = "GetLogin," + this.ID;
+            communication.writeLine(request);
+
+            this.login.setText(communication.readLine());
+        }
+        catch (IOException e) {
+            System.out.println("Нет соединения с сервером!");
+        }
+    }
+    @FXML
+    public void setData(String ID)
+    {
+        this.ID = ID;
+        getLogin();
     }
 
     @FXML
@@ -63,6 +79,8 @@ public class MainMenuController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("testForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 771, 538);
+        testFormController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setID(this.ID);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -75,7 +93,6 @@ public class MainMenuController {
         assert leaveButton != null : "fx:id=\"leaveButton\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
         assert myProgress != null : "fx:id=\"myProgress\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
         assert randomTest != null : "fx:id=\"randomTest\" was not injected: check your FXML file 'mainMenuForm.fxml'.";
-
     }
 
 }

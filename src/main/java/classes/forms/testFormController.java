@@ -61,13 +61,18 @@ public class testFormController {
     private String response = "";
     @FXML
     private Button thirdAns;
-
+    @FXML
+    private String ID = "";
+    @FXML
+    public void setID(String ID) {this.ID = ID;}
     @FXML
     void returnToMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) quit.getScene().getWindow();
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+        MainMenuController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData(this.ID);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -151,6 +156,7 @@ public class testFormController {
             Scene scene = new Scene(fxmlLoader.load(), 249, 320);
             progressInfoFormController controllerEditBook = fxmlLoader.getController();
             controllerEditBook.setData("RandomTest",correctAnswers,MAX_QUESTIONS);
+            controllerEditBook.setID(this.ID);
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();

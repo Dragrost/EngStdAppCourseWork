@@ -45,6 +45,21 @@ public class LogFormController {
     private Button regButton;
 
     @FXML
+    private String getID()
+    {
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
+        {
+            String request = "GetID," + login.getText();
+            communication.writeLine(request);
+
+            return communication.readLine();
+        }
+        catch (IOException e) {
+            return "Нет соединения с сервером!";
+        }
+
+    }
+    @FXML
     void ClickToChangeForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
         stage.close();
@@ -100,7 +115,7 @@ public class LogFormController {
                     FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 561, 695);
                     MainMenuController controllerEditBook = fxmlLoader.getController();
-                    controllerEditBook.getData(login.getText());
+                    controllerEditBook.setData(getID());
                     stage.setResizable(false);
                     stage.setScene(scene);
                     stage.show();

@@ -26,11 +26,17 @@ public class progressInfoFormController {
     private Button returnBack;
 
     @FXML
+    private String ID = "";
+    @FXML
+    public void setID(String ID) {this.ID = ID;}
+    @FXML
     void clickToReturn(ActionEvent event) throws IOException {
         Stage stage = (Stage) returnBack.getScene().getWindow();
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+        MainMenuController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData(this.ID);
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
