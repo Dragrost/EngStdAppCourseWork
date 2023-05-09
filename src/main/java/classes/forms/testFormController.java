@@ -58,6 +58,8 @@ public class testFormController {
     @FXML
     private String correctAnswersWords = "";
     @FXML
+    private String incorrectAnswersWords = "";
+    @FXML
     private String response = "";
     @FXML
     private Button thirdAns;
@@ -136,8 +138,10 @@ public class testFormController {
 
         if ((engWords.indexOf(chosenButtWord) == currentQuestionNum-1) || (rusWords.indexOf(chosenButtWord) == currentQuestionNum-1)) {
             correctAnswers++;
-            correctAnswersWords += "," + engWords.get(currentQuestionNum-1);
+            correctAnswersWords += engWords.get(currentQuestionNum-1) + "!";
         }
+        else
+            incorrectAnswersWords += engWords.get(currentQuestionNum-1) + "!";
     }
 
     @FXML
@@ -148,7 +152,7 @@ public class testFormController {
             System.out.println(correctAnswers);
             System.out.println(correctAnswersWords);
 
-            requestToServer("AddWordsProgress" + this.correctAnswersWords);
+            requestToServer("AddWordsProgress," + this.ID + "," + this.correctAnswersWords + "," + this.incorrectAnswersWords);
 
             Stage stage = (Stage) quit.getScene().getWindow();
             stage.close();
