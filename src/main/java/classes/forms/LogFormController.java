@@ -45,6 +45,14 @@ public class LogFormController {
     private Button regButton;
 
     @FXML
+    private boolean isAdmin() throws IOException
+    {
+        GeneralComm communication = new GeneralComm("127.0.0.1", 8000);
+        String request = "GetStatus," + getID();
+        communication.writeLine(request);
+        return (communication.readLine().equals("ADMIN")) ? true : false;
+    }
+    @FXML
     private String getID()
     {
         try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
@@ -112,13 +120,26 @@ public class LogFormController {
                 else {
                     Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
                     stage.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 561, 695);
-                    MainMenuController controllerEditBook = fxmlLoader.getController();
-                    controllerEditBook.setData(getID());
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
+
+                    if (isAdmin())
+                    {
+                        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 567, 565);
+                        adminPanelFormController controllerEditBook = fxmlLoader.getController();
+                        controllerEditBook.setData(getID());
+                        stage.setResizable(false);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                    else {
+                        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                        MainMenuController controllerEditBook = fxmlLoader.getController();
+                        controllerEditBook.setData(getID());
+                        stage.setResizable(false);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
                 }
             }
             catch (IOException e) {

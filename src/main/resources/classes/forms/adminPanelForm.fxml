@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.adminPanelFormController">
+   <children>
+      <ImageView fitHeight="565.0" fitWidth="567.0">
+         <image>
+            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="309.0" layoutY="31.0" prefHeight="131.0" prefWidth="177.0" style="-fx-background-color: WHITE; -fx-background-radius: 20;">
+         <children>
+            <Text fx:id="login" layoutX="8.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi," textAlignment="CENTER" wrappingWidth="225.13671875">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="quit" layoutX="76.0" layoutY="85.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="32.0" prefWidth="83.0" text="Выход" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="45.0" layoutY="181.0" prefHeight="358.0" prefWidth="478.0" style="-fx-background-color: WHITE; -fx-background-radius: 20;">
+         <children>
+            <Button fx:id="addWord" layoutX="42.0" layoutY="14.0" mnemonicParsing="false" onAction="#addWordToDic" prefHeight="73.0" prefWidth="175.0" text="Добавить слово в словарь" />
+            <Button layoutX="42.0" layoutY="114.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="175.0" text="Создать тест" />
+            <Button layoutX="266.0" layoutY="14.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="175.0" text="Удадить слово из словаря" />
+            <Button layoutX="266.0" layoutY="114.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="175.0" text="Удалить тест" />
+            <Button layoutX="144.0" layoutY="225.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="190.0" text="Посмотреть общий прогресс" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
