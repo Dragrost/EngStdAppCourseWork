@@ -42,11 +42,11 @@ public class testFormController {
     private Button secAns;
 
     @FXML
-    private final int MAX_QUESTIONS = 20;
+    private int MAX_QUESTIONS = 20;
     @FXML
     private int questionWord = 0;
     @FXML
-    private int randomWord = MAX_QUESTIONS - 1;
+    private int randomWord = 0;
     @FXML
     private final ArrayList<String> engWords = new ArrayList<>();
     @FXML
@@ -80,16 +80,35 @@ public class testFormController {
         stage.show();
     }
 
+    private int[] getRandomArray(int questionWord)
+    {
+        final int QUANTITY_ANSWERS = 4;
+        String[] randSrt = {"", "", "", ""};
+        int[] randWords = new int[QUANTITY_ANSWERS];
+        int i = 0;
+
+        while (i < QUANTITY_ANSWERS) {
+            int rand = (int) (Math.random() * (engWords.size()-1)) + 1;
+            if (!randSrt[i].contains(String.valueOf(rand)) && rand != questionWord)
+            {
+                randWords[i] = rand;
+                randSrt[i] = String.valueOf(rand);
+                i++;
+            }
+        }
+        return randWords;
+    }
     @FXML
     private void arrangeEngWords() {
         int rand = (int) (Math.random() * 4) + 1;
+        int[] randWords = getRandomArray(questionWord);
 
         question.setText("How does word '" + engWords.get(questionWord) + "' translate into Russian?");
 
-        firstAns.setText(rusWords.get(randomWord++));
-        secAns.setText(rusWords.get(randomWord++));
-        thirdAns.setText(rusWords.get(randomWord++));
-        fourAns.setText(rusWords.get(randomWord++));
+        firstAns.setText(rusWords.get(randWords[0]));
+        secAns.setText(rusWords.get(randWords[1]));
+        thirdAns.setText(rusWords.get(randWords[2]));
+        fourAns.setText(rusWords.get(randWords[3]));
 
         randomWord--;
         switch (rand) {
@@ -103,13 +122,14 @@ public class testFormController {
     @FXML
     private void arrangeRusWords() {
         int rand = (int) (Math.random() * 4) + 1;
+        int[] randWords = getRandomArray(questionWord);
 
         question.setText("Как переводится слово '" + rusWords.get(questionWord) + "' на английский язык?");
 
-        firstAns.setText(engWords.get(randomWord++));
-        secAns.setText(engWords.get(randomWord++));
-        thirdAns.setText(engWords.get(randomWord++));
-        fourAns.setText(engWords.get(randomWord++));
+        firstAns.setText(engWords.get(randWords[0]));
+        secAns.setText(engWords.get(randWords[1]));
+        thirdAns.setText(engWords.get(randWords[2]));
+        fourAns.setText(engWords.get(randWords[3]));
 
         randomWord--;
         switch (rand) {
@@ -159,7 +179,7 @@ public class testFormController {
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 249, 320);
             progressInfoFormController controllerEditBook = fxmlLoader.getController();
-            controllerEditBook.setData("RandomTest",correctAnswers,MAX_QUESTIONS);
+            controllerEditBook.setData("Test",correctAnswers,MAX_QUESTIONS);
             controllerEditBook.setID(this.ID);
             stage.setResizable(false);
             stage.setScene(scene);
@@ -184,6 +204,7 @@ public class testFormController {
                 rusWords.add(strings[i]);
             }
         }
+        this.response = "";
         arrangeAns();
     }
 
@@ -198,6 +219,13 @@ public class testFormController {
             System.out.println("Нет соединения с сервером!");
         }
     }
+
+    public void generationMethods(String method, final int MAX_QUESTIONS)
+    {
+        this.MAX_QUESTIONS = MAX_QUESTIONS;
+        requestToServer(method);
+        processResponse(response);
+    }
     @FXML
     void initialize() {
         assert firstAns != null : "fx:id=\"firstAns\" was not injected: check your FXML file 'testForm.fxml'.";
@@ -206,7 +234,5 @@ public class testFormController {
         assert question != null : "fx:id=\"question\" was not injected: check your FXML file 'testForm.fxml'.";
         assert secAns != null : "fx:id=\"secAns\" was not injected: check your FXML file 'testForm.fxml'.";
         assert thirdAns != null : "fx:id=\"thirdAns\" was not injected: check your FXML file 'testForm.fxml'.";
-        requestToServer("RandomGeneration");
-        processResponse(response);
     }
 }

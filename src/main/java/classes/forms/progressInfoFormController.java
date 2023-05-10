@@ -3,6 +3,8 @@ package classes.forms;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +26,8 @@ public class progressInfoFormController {
 
     @FXML
     private Button returnBack;
+    @FXML
+    private int MAX_WORDS = 1025;
 
     @FXML
     private String ID = "";
@@ -42,11 +46,26 @@ public class progressInfoFormController {
         stage.show();
     }
 
+    private String progressInfo()
+    {
+        String response = "";
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
+        {
+            String request = "getProgress," + ID;
+            communication.writeLine(request);
+            response = communication.readLine();
+        }
+        catch (IOException e) {
+            System.out.println("Нет соединения с сервером!");
+        }
+        return response;
+    }
     @FXML
     public void setData(String operation, int correctAnswers, int maxAnswers)
     {
         switch (operation){
-            case "RandomTest" -> infoText.setText("Всего правильных ответов - " + correctAnswers + "/" + maxAnswers);
+            case "Test" -> infoText.setText("Всего правильных ответов - " + correctAnswers + "/" + maxAnswers);
+            case "myProgress" -> infoText.setText("Всего правильных ответов - " + progressInfo() + "/" + MAX_WORDS);
         }
     }
 
