@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,9 +23,19 @@ public class adminPanelFormController {
     private URL location;
 
     @FXML
-    private Text login;
+    private Button addTest;
+
     @FXML
     private Button addWord;
+
+    @FXML
+    private Button delTest;
+
+    @FXML
+    private Button delWord;
+    @FXML
+    private Text login;
+
     @FXML
     private String ID;
 
@@ -50,11 +61,28 @@ public class adminPanelFormController {
         this.ID = ID;
         login.setText("Hi, " + getLogin());
     }
+
     @FXML
-    void addWordToDic(ActionEvent event) {
+    public void methodOperation(MouseEvent event) throws IOException {
 
+        Stage stage = (Stage) quit.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("inputDataForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 356);
+        InputDataController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData(this.ID);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+
+        String chosenButtWord = ((Button) event.getSource()).getId();
+        switch (chosenButtWord) {
+            case "delWord" -> controllerEditBook.input("DeleteWords");
+            case "delTest" -> controllerEditBook.input("DeleteTest");
+            case "addWord" -> controllerEditBook.input("AddWords");
+            default -> controllerEditBook.input("AddTest");
+        }
     }
-
     @FXML
     void clickToLeave(ActionEvent event) throws IOException {
         Stage stage = (Stage) quit.getScene().getWindow();

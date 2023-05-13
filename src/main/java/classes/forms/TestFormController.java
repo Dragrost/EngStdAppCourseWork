@@ -16,7 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class testFormController {
+public class TestFormController {
 
     @FXML
     private ResourceBundle resources;
@@ -178,7 +178,7 @@ public class testFormController {
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 249, 320);
-            progressInfoFormController controllerEditBook = fxmlLoader.getController();
+            ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
             controllerEditBook.setData("Test",correctAnswers,MAX_QUESTIONS);
             controllerEditBook.setID(this.ID);
             stage.setResizable(false);

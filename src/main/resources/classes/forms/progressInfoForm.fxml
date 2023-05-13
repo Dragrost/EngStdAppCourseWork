@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="320.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.progressInfoFormController">
+<AnchorPane prefHeight="320.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.ProgressInfoFormController">
    <children>
       <Text fx:id="infoText" layoutX="11.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="232.13671875" />
       <Button fx:id="returnBack" layoutX="22.0" layoutY="249.0" mnemonicParsing="false" onAction="#clickToReturn" prefHeight="57.0" prefWidth="206.0" text="Назад" />

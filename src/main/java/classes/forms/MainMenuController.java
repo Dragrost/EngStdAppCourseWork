@@ -89,7 +89,7 @@ public class MainMenuController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 249, 320);
-        progressInfoFormController controllerEditBook = fxmlLoader.getController();
+        ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setID(this.ID);
         controllerEditBook.setData("myProgress",0,0);
         stage.setResizable(false);
@@ -114,7 +114,7 @@ public class MainMenuController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("testForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 771, 538);
-        testFormController controllerEditBook = fxmlLoader.getController();
+        TestFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setID(this.ID);
         controllerEditBook.generationMethods("RandomGeneration",MAX_QUESTIONS);
         stage.setResizable(false);
@@ -129,7 +129,7 @@ public class MainMenuController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("testForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 771, 538);
-        testFormController controllerEditBook = fxmlLoader.getController();
+        TestFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setID(this.ID);
         controllerEditBook.generationMethods("AllQuestions",MAX_QUESTIONS);
         stage.setResizable(false);
