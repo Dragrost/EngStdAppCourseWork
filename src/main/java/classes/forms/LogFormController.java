@@ -121,25 +121,26 @@ public class LogFormController {
                     Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
                     stage.close();
 
+                    FXMLLoader fxmlLoader;
+                    Scene scene;
+
                     if (isAdmin())
                     {
-                        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 567, 565);
+                        fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
+                        scene = new Scene(fxmlLoader.load(), 567, 565);
                         adminPanelFormController controllerEditBook = fxmlLoader.getController();
                         controllerEditBook.setData(getID());
-                        stage.setResizable(false);
-                        stage.setScene(scene);
-                        stage.show();
+
                     }
                     else {
-                        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-                        Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                        fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                        scene = new Scene(fxmlLoader.load(), 561, 695);
                         MainMenuController controllerEditBook = fxmlLoader.getController();
                         controllerEditBook.setData(getID());
-                        stage.setResizable(false);
-                        stage.setScene(scene);
-                        stage.show();
                     }
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             }
             catch (IOException e) {

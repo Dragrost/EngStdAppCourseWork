@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -56,10 +57,12 @@
                </children>
             </AnchorPane>
             <Button fx:id="myProgress" layoutX="46.0" layoutY="238.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" text="Результат" />
-            <Button fx:id="generalTests" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="198.0" text="Пройти готовый тест" />
-            <Button fx:id="randomTest" layoutX="46.0" layoutY="332.0" mnemonicParsing="false" onAction="#genRandTest" prefHeight="64.0" prefWidth="198.0" text="Сгенерировать тест" />
-            <Button fx:id="deleteAcc" layoutX="111.0" layoutY="547.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="64.0" prefWidth="273.0" text="Удалить аккаунт" />
-            <Button fx:id="allWords" layoutX="253.0" layoutY="332.0" mnemonicParsing="false" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" text="Марафон" />
+            <Button fx:id="generalTests" layoutX="46.0" layoutY="429.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" text="Пройти готовый тест" />
+            <Button fx:id="randomTest" layoutX="46.0" layoutY="332.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" text="Сгенерировать тест" />
+            <Button fx:id="deleteAcc" layoutX="253.0" layoutY="332.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" text="Удалить аккаунт" />
+            <Button fx:id="allWords" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" text="Марафон" />
+            <Label fx:id="testIDLabel" layoutX="253.0" layoutY="429.0" prefHeight="17.0" prefWidth="198.0" text="Введите номер теста (1 -" visible="false" />
+            <TextField fx:id="testID" layoutX="253.0" layoutY="449.0" prefHeight="25.0" prefWidth="52.0" promptText="Номер" visible="false" />
          </children>
       </AnchorPane>
    </children>

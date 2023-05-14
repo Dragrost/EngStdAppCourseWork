@@ -53,7 +53,7 @@ public class ProgressInfoFormController {
         switch (operation){
             case "Test" -> infoText.setText("Всего правильных ответов - " + correctAnswers + "/" + maxAnswers);
             case "myProgress" -> infoText.setText("Всего правильных ответов - " + progressInfo("getProgress," + ID) + "/" + MAX_WORDS);
-            case "AverageProgress" -> infoText.setText("Средний результат всех участников - " + progressInfo("checkAverageProgress") + "/" + progressInfo("getQuantityWords"));
+            case "AverageProgress" -> infoText.setText("Средний результат всех участников - " + progressInfo("checkAverageProgress") + "/" + progressInfo("getQuantityWords,engruswords"));
         }
     }
 
