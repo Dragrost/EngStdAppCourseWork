@@ -174,8 +174,12 @@ public class TestFormController {
 
             requestToServer("AddWordsProgress," + this.ID + "," + this.correctAnswersWords + "," + this.incorrectAnswersWords);
 
-            Stage stage = (Stage) quit.getScene().getWindow();
-            stage.close();
+            firstAns.setDisable(true);
+            secAns.setDisable(true);
+            thirdAns.setDisable(true);
+            fourAns.setDisable(true);
+
+            Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 249, 320);
             ProgressInfoFormController controllerEditBook = fxmlLoader.getController();

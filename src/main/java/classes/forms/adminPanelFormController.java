@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 public class adminPanelFormController {
 
     @FXML
+    private Button averageProgress;
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -94,6 +96,18 @@ public class adminPanelFormController {
         stage.show();
     }
 
+    @FXML
+    void clickToCheckAVGProgress(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 249, 320);
+        ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setID(this.ID);
+        controllerEditBook.setData("AverageProgress",0,0);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML
     void initialize() {
         assert addWord != null : "fx:id=\"addWord\" was not injected: check your FXML file 'adminPanelForm.fxml'.";

@@ -85,8 +85,7 @@ public class MainMenuController {
     }
     @FXML
     void checkResult(ActionEvent event) throws IOException {
-        Stage stage = (Stage) myProgress.getScene().getWindow();
-        stage.close();
+        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 249, 320);
         ProgressInfoFormController controllerEditBook = fxmlLoader.getController();

@@ -153,16 +153,6 @@ public class InputDataController {
         }
         return response;
     }
-   /* private String handlerExceptions(String response)
-    {
-        switch (response) {
-            case "errorNumKey" -> errorInfo.setText("Данного номера не существует");
-            case "" -> errorInfo.setText("Заполните поле 'Количество элементов'");
-            default -> {return "allGood";}
-        }
-        currentMotion--;
-        return response;
-    }*/
     @FXML
     void clickToLeave(ActionEvent event) throws IOException {
         Stage stage = (Stage) quit.getScene().getWindow();
@@ -203,7 +193,7 @@ public class InputDataController {
             data = "";
         }
         else
-            data += getData();
+            data += "," + getData();
 
         currentMotion++;
         currentStep.setText(currentMotion + "/" + quantityElems.getText());

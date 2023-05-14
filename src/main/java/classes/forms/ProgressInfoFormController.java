@@ -33,25 +33,12 @@ public class ProgressInfoFormController {
     private String ID = "";
     @FXML
     public void setID(String ID) {this.ID = ID;}
-    @FXML
-    void clickToReturn(ActionEvent event) throws IOException {
-        Stage stage = (Stage) returnBack.getScene().getWindow();
-        stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 561, 695);
-        MainMenuController controllerEditBook = fxmlLoader.getController();
-        controllerEditBook.setData(this.ID);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
-    }
 
-    private String progressInfo()
+    private String progressInfo(String request)
     {
         String response = "";
         try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
         {
-            String request = "getProgress," + ID;
             communication.writeLine(request);
             response = communication.readLine();
         }
@@ -65,7 +52,8 @@ public class ProgressInfoFormController {
     {
         switch (operation){
             case "Test" -> infoText.setText("Всего правильных ответов - " + correctAnswers + "/" + maxAnswers);
-            case "myProgress" -> infoText.setText("Всего правильных ответов - " + progressInfo() + "/" + MAX_WORDS);
+            case "myProgress" -> infoText.setText("Всего правильных ответов - " + progressInfo("getProgress," + ID) + "/" + MAX_WORDS);
+            case "AverageProgress" -> infoText.setText("Средний результат всех участников - " + progressInfo("checkAverageProgress") + "/" + progressInfo("getQuantityWords"));
         }
     }
 
