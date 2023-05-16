@@ -3,6 +3,7 @@ package classes.forms;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import classes.comm.GeneralComm;
@@ -48,6 +49,7 @@ public class TestFormController {
     @FXML
     private int randomWord = 0;
     @FXML
+    private final ArrayList<String> words = new ArrayList<>();
     private final ArrayList<String> engWords = new ArrayList<>();
     @FXML
     private final ArrayList<String> rusWords = new ArrayList<>();
@@ -65,6 +67,7 @@ public class TestFormController {
     private Button thirdAns;
     @FXML
     private String ID = "";
+    private String method = "";
     @FXML
     public void setID(String ID) {this.ID = ID;}
     @FXML
@@ -140,14 +143,32 @@ public class TestFormController {
         }
     }
 
+    private int j = 0;
+    private void arrangeAdminTestAns()
+    {
+        if (words.get(j + 5).equals("Английский"))
+            question.setText("How does word '" + words.get(j++) + "' translate into Russian?");
+        else
+            question.setText("Как переводится слово '" + words.get(j++) + "' на английский язык?");
+        firstAns.setText(words.get(j++));
+        secAns.setText(words.get(j++));
+        thirdAns.setText(words.get(j++));
+        fourAns.setText(words.get(j++));
+        j++;
+    }
     @FXML
     private void arrangeAns() {
         questionNumLabel.setText(currentQuestionNum + 1 + "/" + MAX_QUESTIONS);
-        int rand = (int) (Math.random() * 2) + 1;
-        if (rand == 1)
-            arrangeEngWords();
+        if (method.equals("AdminTest"))
+            arrangeAdminTestAns();
         else
-            arrangeRusWords();
+        {
+            int rand = (int) (Math.random() * 2) + 1;
+            if (rand == 1)
+                arrangeEngWords();
+            else
+                arrangeRusWords();
+        }
         currentQuestionNum++;
     }
 
@@ -201,14 +222,23 @@ public class TestFormController {
     private void processResponse(String response)
     {
         String[] strings = response.split("!");
-        for (int i = 0; i < strings.length;i++) {
-            if ((i % 2 == 0)) {
-                engWords.add(strings[i]);
-            } else {
-                rusWords.add(strings[i]);
+        if (!method.equals("AdminTest"))
+        {
+            for (int i = 0; i < strings.length;i++) {
+                if ((i % 2 == 0)) {
+                    engWords.add(strings[i]);
+                } else {
+                    rusWords.add(strings[i]);
+                }
             }
+            this.response = "";
         }
-        this.response = "";
+        else
+        {
+            Collections.addAll(words,strings);
+            words.removeAll(Collections.singleton(""));
+        }
+
         arrangeAns();
     }
 
@@ -228,6 +258,7 @@ public class TestFormController {
     {
         this.MAX_QUESTIONS = MAX_QUESTIONS;
         requestToServer(method);
+        this.method = method.substring(0, 9);
         processResponse(response);
     }
     @FXML
