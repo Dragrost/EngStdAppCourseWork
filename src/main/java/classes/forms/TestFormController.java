@@ -171,9 +171,21 @@ public class TestFormController {
         }
         currentQuestionNum++;
     }
-
     @FXML
-    private void checkCorrectAnswers(MouseEvent event)
+    private void checkCorrectAnswersAdmTest(MouseEvent event)
+    {
+        String chosenButtWord = ((Button)event.getSource()).getText();
+        requestToServer("checkWordsID," + words.get(j-6) + "," + chosenButtWord);
+
+        if (response.equals("allGood")){
+            correctAnswers++;
+            correctAnswersWords += words.get(j-6) + "!";
+        }
+        else
+            incorrectAnswersWords += words.get(j-6) + "!";
+    }
+    @FXML
+    private void checkCorrectAnswersRandom(MouseEvent event)
     {
         String chosenButtWord = ((Button)event.getSource()).getText();
 
@@ -185,11 +197,19 @@ public class TestFormController {
             incorrectAnswersWords += engWords.get(currentQuestionNum-1) + "!";
     }
 
+    private void checkTest(MouseEvent event)
+    {
+        if (method.equals("AdminTest"))
+            checkCorrectAnswersAdmTest(event);
+        else
+            checkCorrectAnswersRandom(event);
+    }
+
     @FXML
     void checkAnswers(MouseEvent event) throws IOException {
         if (currentQuestionNum == MAX_QUESTIONS)
         {
-            checkCorrectAnswers(event);
+            checkTest(event);
             System.out.println(correctAnswers);
             System.out.println(correctAnswersWords);
 
@@ -212,7 +232,7 @@ public class TestFormController {
         }
         else
         {
-            checkCorrectAnswers(event);
+            checkTest(event);
             arrangeAns();
         }
 
@@ -231,14 +251,13 @@ public class TestFormController {
                     rusWords.add(strings[i]);
                 }
             }
-            this.response = "";
         }
         else
         {
             Collections.addAll(words,strings);
             words.removeAll(Collections.singleton(""));
         }
-
+        this.response = "";
         arrangeAns();
     }
 
