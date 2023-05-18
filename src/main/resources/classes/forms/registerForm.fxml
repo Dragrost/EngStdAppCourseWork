@@ -6,9 +6,11 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,32 +18,32 @@
    <children>
       <ImageView fitHeight="543.0" fitWidth="516.0">
          <image>
-            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+            <Image url="@../../Images/BackGround.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="115.0" layoutY="65.0" prefHeight="413.0" prefWidth="287.0" style="-fx-background-color: WHITE; -fx-background-radius: 35;">
+      <AnchorPane layoutX="115.0" layoutY="65.0" prefHeight="413.0" prefWidth="287.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-background-radius: 35; -fx-opacity: 0.5;">
          <children>
-            <Button fx:id="regButton" layoutX="42.0" layoutY="318.0" mnemonicParsing="false" onAction="#clickReg" prefHeight="44.0" prefWidth="204.0" style="-fx-background-radius: 100;" text="Зарегестрироваться" textAlignment="CENTER">
+            <Button fx:id="regButton" layoutX="42.0" layoutY="318.0" mnemonicParsing="false" onAction="#clickReg" opacity="0.99" prefHeight="44.0" prefWidth="204.0" style="-fx-background-radius: 100;" text="Зарегистрироваться" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></Button>
-            <Label layoutX="48.0" layoutY="31.0" prefHeight="44.0" prefWidth="192.0" text="Регистрация" textAlignment="CENTER">
+            <Label layoutX="48.0" layoutY="31.0" prefHeight="44.0" prefWidth="192.0" text="Регистрация" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="login" alignment="TOP_LEFT" layoutX="62.0" layoutY="123.0" prefHeight="25.0" prefWidth="192.0" promptText="Логин" style="-fx-background-color: transparent;">
+            <TextField fx:id="login" alignment="TOP_LEFT" layoutX="62.0" layoutY="123.0" prefHeight="25.0" prefWidth="192.0" promptText="Логин" style="-fx-background-color: transparent; -fx-text-fill: white;">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
             <Separator layoutX="34.0" layoutY="148.0" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: BLACK;" />
-            <PasswordField fx:id="password" layoutX="62.0" layoutY="181.0" prefHeight="25.0" prefWidth="192.0" promptText="Пароль" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="password" layoutX="62.0" layoutY="181.0" prefHeight="25.0" prefWidth="192.0" promptText="Пароль" style="-fx-background-color: transparent; -fx-text-fill: white;">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </PasswordField>
-            <PasswordField fx:id="confirmPassword" layoutX="62.0" layoutY="239.0" prefHeight="25.0" prefWidth="192.0" promptText="Повторите пароль" style="-fx-background-color: transparent;">
+            <PasswordField fx:id="confirmPassword" layoutX="62.0" layoutY="239.0" prefHeight="25.0" prefWidth="192.0" promptText="Повторите пароль" style="-fx-background-color: transparent; -fx-text-fill: white;">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -50,37 +52,44 @@
             <Separator layoutX="34.0" layoutY="206.0" prefHeight="3.0" prefWidth="220.0" style="-fx-background-color: BLACK;" />
             <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="126.0">
                <image>
-                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/logImg.png" />
+                  <Image url="@../../Images/logImg.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="184.0">
                <image>
-                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/regImg.png" />
+                  <Image url="@../../Images/regImg.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="38.0" layoutY="242.0">
                <image>
-                  <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/regImg.png" />
+                  <Image url="@../../Images/regImg.png" />
                </image>
             </ImageView>
-            <Label layoutX="24.0" layoutY="375.0" prefHeight="17.0" prefWidth="204.0" text="Уже зарегистрировались? Нажмите">
+            <Label layoutX="24.0" layoutY="375.0" prefHeight="17.0" prefWidth="204.0" text="Уже зарегистрировались? Нажмите" textFill="WHITE">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
             <Button fx:id="ChangeFormButton" layoutX="222.0" layoutY="372.0" mnemonicParsing="false" onAction="#ClickToChangeForm" style="-fx-background-color: transparent;" text="cюда" textFill="#0092ff">
                <font>
-                  <Font name="Arial" size="12.0" />
+                  <Font name="Arial Bold" size="12.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fx:id="errorInput" fill="RED" layoutX="34.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="220.0">
+            <Text fx:id="errorInput" fill="WHITE" layoutX="34.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="220.0">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Text>
-         </children></AnchorPane>
+         </children>
+         <effect>
+            <DropShadow height="20.52" radius="9.76" width="20.52">
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect></AnchorPane>
    </children>
 </AnchorPane>
