@@ -56,13 +56,27 @@
                   </Button>
                </children>
             </AnchorPane>
+            <AnchorPane layoutX="6.0" layoutY="501.0" prefHeight="111.0" prefWidth="483.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 50;">
+               <children>
+                  <Label fx:id="testIDLabel" layoutX="29.0" layoutY="14.0" prefHeight="27.0" prefWidth="234.0" text="Введите номер теста (1 -" visible="false">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="testID" layoutX="29.0" layoutY="55.0" prefHeight="25.0" prefWidth="52.0" promptText="Номер" visible="false" />
+               </children>
+            </AnchorPane>
             <Button fx:id="myProgress" layoutX="46.0" layoutY="238.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" text="Результат" />
-            <Button fx:id="generalTests" layoutX="46.0" layoutY="429.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" text="Пройти готовый тест" />
+            <Button fx:id="generalTests" layoutX="46.0" layoutY="426.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" text="Пройти готовый тест" />
             <Button fx:id="randomTest" layoutX="46.0" layoutY="332.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" text="Сгенерировать тест" />
-            <Button fx:id="deleteAcc" layoutX="253.0" layoutY="332.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" text="Удалить аккаунт" />
+            <Button fx:id="deleteAcc" layoutX="253.0" layoutY="426.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" text="Удалить аккаунт" />
             <Button fx:id="allWords" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" text="Марафон" />
-            <Label fx:id="testIDLabel" layoutX="253.0" layoutY="429.0" prefHeight="17.0" prefWidth="198.0" text="Введите номер теста (1 -" visible="false" />
-            <TextField fx:id="testID" layoutX="253.0" layoutY="449.0" prefHeight="25.0" prefWidth="52.0" promptText="Номер" visible="false" />
+            <Button fx:id="researchWords" layoutX="253.0" layoutY="332.0" mnemonicParsing="false" onAction="#researchAllWords" prefHeight="64.0" prefWidth="198.0" text="Изучить все слова" />
+            <Label fx:id="areYouSure" layoutX="289.0" layoutY="508.0" prefHeight="36.0" prefWidth="124.0" text="Вы уверены?" textAlignment="CENTER" textFill="RED" visible="false">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

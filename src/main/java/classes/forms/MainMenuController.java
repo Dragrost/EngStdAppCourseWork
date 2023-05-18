@@ -19,17 +19,10 @@ public class MainMenuController {
 
     @FXML
     private Button allWords;
-    @FXML
-    private ResourceBundle resources;
 
     @FXML
-    private URL location;
+    private Label areYouSure;
 
-    @FXML
-    private TextField testID;
-
-    @FXML
-    private Label testIDLabel;
     @FXML
     private Button deleteAcc;
 
@@ -41,13 +34,24 @@ public class MainMenuController {
 
     @FXML
     private Text login;
+
     @FXML
     private Button myProgress;
 
     @FXML
-    private String ID = "";
-    @FXML
     private Button randomTest;
+
+    @FXML
+    private Button researchWords;
+
+    @FXML
+    private TextField testID;
+
+    @FXML
+    private Label testIDLabel;
+
+    @FXML
+    private String ID = "";
 
     private void openTestForm(String test) {
         int MAX_QUESTIONS;
@@ -112,15 +116,21 @@ public class MainMenuController {
     }
     @FXML
     void deleteAcc(ActionEvent event) throws IOException {
-        sendRequest("Delete," + this.ID);
+        if (areYouSure.isVisible())
+        {
+            sendRequest("Delete," + this.ID);
 
-        Stage stage = (Stage) leaveButton.getScene().getWindow();
-        stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("logForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 516, 543);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+            Stage stage = (Stage) leaveButton.getScene().getWindow();
+            stage.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("logForm.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 516, 543);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        }
+        else
+            areYouSure.setVisible(true);
+
     }
     @FXML
     void checkResult(ActionEvent event) throws IOException {
@@ -153,6 +163,19 @@ public class MainMenuController {
     @FXML
     void getAllQuestions(ActionEvent event){
         openTestForm("AllQuestions");
+    }
+
+    @FXML
+    void researchAllWords(ActionEvent event) throws IOException {
+        Stage stage = (Stage) researchWords.getScene().getWindow();
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("researchForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 495, 323);
+        ResearchWordsController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData(this.ID);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     void initialize() {
