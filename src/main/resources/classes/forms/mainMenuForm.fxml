@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,72 +13,107 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="688.0" prefWidth="549.0" style="-fx-background-image: url(&quot; file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.MainMenuController">
+<AnchorPane prefHeight="688.0" prefWidth="561.0" style="-fx-background-image: url(&quot; file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.MainMenuController">
    <children>
-      <ImageView fitHeight="688.0" fitWidth="561.0" layoutY="7.0">
+      <ImageView fitHeight="695.0" fitWidth="561.0">
          <image>
-            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+            <Image url="@../../Images/BGMain.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="33.0" layoutY="35.0" prefHeight="625.0" prefWidth="495.0" style="-fx-background-color: WHITE; -fx-background-radius: 50;">
-         <children>
-            <AnchorPane layoutX="208.0" layoutY="14.0" prefHeight="200.0" prefWidth="273.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 30;">
-               <children>
-                  <Label layoutX="84.0" layoutY="14.0" prefHeight="36.0" prefWidth="105.0" text="Привет! " textAlignment="CENTER">
-                     <font>
-                        <Font name="Arial Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Text fx:id="login" layoutX="4.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your name" textAlignment="CENTER" wrappingWidth="263.13671875">
-                     <font>
-                        <Font name="Arial Bold" size="24.0" />
-                     </font>
-                     <fill>
-                        <RadialGradient centerX="0.494475138121547" centerY="0.41469194312796204" focusAngle="-2.12" radius="0.8333333333333334">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.9605262875556946" green="0.4482456147670746" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Text>
-                  <Button fx:id="leaveButton" layoutX="64.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="47.0" prefWidth="144.0" text="Выйти из аккаунта">
-                     <font>
-                        <Font name="Arial" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="6.0" layoutY="501.0" prefHeight="111.0" prefWidth="483.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 50;">
-               <children>
-                  <Label fx:id="testIDLabel" layoutX="29.0" layoutY="14.0" prefHeight="27.0" prefWidth="234.0" text="Введите номер теста (1 -" visible="false">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="testID" layoutX="29.0" layoutY="55.0" prefHeight="25.0" prefWidth="52.0" promptText="Номер" visible="false" />
-               </children>
-            </AnchorPane>
-            <Button fx:id="myProgress" layoutX="46.0" layoutY="238.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" text="Результат" />
-            <Button fx:id="generalTests" layoutX="46.0" layoutY="426.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" text="Пройти готовый тест" />
-            <Button fx:id="randomTest" layoutX="46.0" layoutY="332.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" text="Сгенерировать тест" />
-            <Button fx:id="deleteAcc" layoutX="253.0" layoutY="426.0" mnemonicParsing="false" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" text="Удалить аккаунт" />
-            <Button fx:id="allWords" layoutX="253.0" layoutY="238.0" mnemonicParsing="false" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" text="Марафон" />
-            <Button fx:id="researchWords" layoutX="253.0" layoutY="332.0" mnemonicParsing="false" onAction="#researchAllWords" prefHeight="64.0" prefWidth="198.0" text="Изучить все слова" />
-            <Label fx:id="areYouSure" layoutX="289.0" layoutY="508.0" prefHeight="36.0" prefWidth="124.0" text="Вы уверены?" textAlignment="CENTER" textFill="RED" visible="false">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
+      <AnchorPane layoutX="35.0" layoutY="261.0" minHeight="10.0" minWidth="10.0" prefHeight="306.0" prefWidth="491.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;" AnchorPane.topAnchor="261.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
+      <AnchorPane layoutX="253.0" layoutY="39.0" prefHeight="200.0" prefWidth="273.0" style="-fx-background-color: transparent; -fx-background-color: Black; -fx-opacity: 0.5; -fx-background-radius: 30;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <AnchorPane fx:id="visiblePanel" layoutX="35.0" layoutY="575.0" prefHeight="71.0" prefWidth="491.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;" visible="false" />
+      <Button fx:id="leaveButton" alignment="CENTER" contentDisplay="TOP" layoutX="315.0" layoutY="164.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="47.0" prefWidth="144.0" style="-fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttondesign.png&quot;); -fx-background-color: transparent;" text="Выйти из аккаунта">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="338.0" layoutY="53.0" prefHeight="36.0" prefWidth="105.0" text="Привет! " textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+      </Label>
+      <Text fx:id="login" layoutX="255.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your name" textAlignment="CENTER" wrappingWidth="263.13671875">
+         <font>
+            <Font name="Arial Bold" size="24.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.494475138121547" centerY="0.41469194312796204" focusAngle="-2.12" radius="0.8333333333333334">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.8045714497566223" blue="0.9599999785423279" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.01315789483487606" green="0.2098684161901474" blue="0.31578946113586426" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+      <Button fx:id="myProgress" layoutX="78.0" layoutY="288.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Результат">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="allWords" alignment="CENTER" cache="true" contentDisplay="TOP" depthTest="ENABLE" layoutX="285.0" layoutY="288.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Марафон">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="randomTest" layoutX="78.0" layoutY="382.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Сгенерировать тест">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="researchWords" alignment="CENTER" layoutX="285.0" layoutY="382.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#researchAllWords" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Изучить все слова">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="generalTests" layoutX="78.0" layoutY="476.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Пройти готовый тест">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteAcc" layoutX="285.0" layoutY="476.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Удалить аккаунт">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="testIDLabel" layoutX="58.0" layoutY="581.0" prefHeight="27.0" prefWidth="263.0" text="Введите номер теста (1 -" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="testID" layoutX="57.0" layoutY="609.0" prefHeight="27.0" prefWidth="58.0" promptText="Номер" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 50; -fx-text-fill: white;" visible="false">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Label fx:id="areYouSure" layoutX="322.0" layoutY="583.0" prefHeight="36.0" prefWidth="124.0" text="Вы уверены?" textAlignment="CENTER" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

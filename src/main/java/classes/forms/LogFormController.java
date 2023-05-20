@@ -8,7 +8,6 @@ import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -41,7 +40,6 @@ public class LogFormController {
     private TextField passSeeTextField;
     @FXML
     private PasswordField password;
-
     @FXML
     private Button regButton;
 
@@ -93,7 +91,7 @@ public class LogFormController {
         }
         else
         {
-            password.setText(passSeeTextField.getText());
+            password.setText(passSeeTextField.getText()); // url("file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttondesign.png")
             password.setPromptText("Пароль");
             passSeeTextField.toBack();
             passSeeTextField.setText("");

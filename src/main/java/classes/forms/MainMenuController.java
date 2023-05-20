@@ -1,8 +1,6 @@
 package classes.forms;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
@@ -12,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -23,6 +22,8 @@ public class MainMenuController {
     @FXML
     private Label areYouSure;
 
+    @FXML
+    private AnchorPane visiblePanel;
     @FXML
     private Button deleteAcc;
 
@@ -104,6 +105,7 @@ public class MainMenuController {
             testIDLabel.setText("Введите номер теста [1 - " + Integer.parseInt(sendRequest("getQuantityWords,mytests")) + "]");
             testID.setVisible(true);
             testIDLabel.setVisible(true);
+            visiblePanel.setVisible(true);
         }
         else
         {
@@ -129,7 +131,11 @@ public class MainMenuController {
             stage.show();
         }
         else
+        {
+            visiblePanel.setVisible(true);
             areYouSure.setVisible(true);
+        }
+
 
     }
     @FXML
