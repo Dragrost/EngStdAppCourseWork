@@ -67,7 +67,7 @@ public class MainMenuController {
             Stage stage = (Stage) randomTest.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("testForm.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 771, 538);
+            Scene scene = new Scene(fxmlLoader.load(), 606, 430);
             TestFormController controllerEditBook = fxmlLoader.getController();
             controllerEditBook.setID(this.ID);
             controllerEditBook.generationMethods(test,MAX_QUESTIONS);
@@ -142,7 +142,7 @@ public class MainMenuController {
     void checkResult(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 249, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 249, 219);
         ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setID(this.ID);
         controllerEditBook.setData("myProgress",0,0);

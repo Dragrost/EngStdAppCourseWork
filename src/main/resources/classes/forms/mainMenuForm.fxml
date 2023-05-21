@@ -39,7 +39,7 @@
          </effect>
       </AnchorPane>
       <AnchorPane fx:id="visiblePanel" layoutX="35.0" layoutY="575.0" prefHeight="71.0" prefWidth="491.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;" visible="false" />
-      <Button fx:id="leaveButton" alignment="CENTER" contentDisplay="TOP" layoutX="315.0" layoutY="164.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="47.0" prefWidth="144.0" style="-fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttondesign.png&quot;); -fx-background-color: transparent;" text="Выйти из аккаунта">
+      <Button fx:id="leaveButton" alignment="CENTER" contentDisplay="TOP" layoutX="315.0" layoutY="164.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="47.0" prefWidth="144.0" style="-fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttondesign.png&quot;); -fx-background-color: transparent;" text="Выйти из аккаунта" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="13.0" />
          </font>
@@ -70,32 +70,32 @@
             </RadialGradient>
          </fill>
       </Text>
-      <Button fx:id="myProgress" layoutX="78.0" layoutY="288.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Результат">
+      <Button fx:id="myProgress" layoutX="78.0" layoutY="288.0" mnemonicParsing="false" onAction="#checkResult" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Результат" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="allWords" alignment="CENTER" cache="true" contentDisplay="TOP" depthTest="ENABLE" layoutX="285.0" layoutY="288.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Марафон">
+      <Button fx:id="allWords" alignment="CENTER" cache="true" contentDisplay="TOP" depthTest="ENABLE" layoutX="285.0" layoutY="288.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#getAllQuestions" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Марафон" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="randomTest" layoutX="78.0" layoutY="382.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Сгенерировать тест">
+      <Button fx:id="randomTest" layoutX="78.0" layoutY="382.0" mnemonicParsing="false" onAction="#getRandTest" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Сгенерировать тест" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="researchWords" alignment="CENTER" layoutX="285.0" layoutY="382.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#researchAllWords" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Изучить все слова">
+      <Button fx:id="researchWords" alignment="CENTER" layoutX="285.0" layoutY="382.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#researchAllWords" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Изучить все слова" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="generalTests" layoutX="78.0" layoutY="476.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Пройти готовый тест">
+      <Button fx:id="generalTests" layoutX="78.0" layoutY="476.0" mnemonicParsing="false" onAction="#adminTests" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Пройти готовый тест" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="deleteAcc" layoutX="285.0" layoutY="476.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Удалить аккаунт">
+      <Button fx:id="deleteAcc" layoutX="285.0" layoutY="476.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#deleteAcc" prefHeight="64.0" prefWidth="198.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Удалить аккаунт" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="15.0" />
          </font>

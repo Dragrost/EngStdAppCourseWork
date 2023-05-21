@@ -222,7 +222,7 @@ public class TestFormController {
 
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 249, 320);
+            Scene scene = new Scene(fxmlLoader.load(), 249, 219);
             ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
             controllerEditBook.setData("Test",correctAnswers,MAX_QUESTIONS);
             controllerEditBook.setID(this.ID);

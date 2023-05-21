@@ -2,51 +2,103 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="323.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.ResearchWordsController">
    <children>
-      <Label layoutX="44.0" layoutY="81.0" prefHeight="50.0" prefWidth="407.0" text="Английское слово - транскрипция - перевод">
+      <ImageView fitHeight="323.0" fitWidth="495.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/allWordsBG.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="14.0" layoutY="162.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="345.0" prefHeight="93.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <Label layoutX="44.0" layoutY="104.0" prefHeight="50.0" prefWidth="407.0" text="Английское слово - транскрипция - перевод" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </Label>
-      <AnchorPane layoutX="14.0" layoutY="138.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 50;">
-         <children>
-            <Text fx:id="eng" layoutX="16.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-         </children>
+      <AnchorPane layoutX="176.0" layoutY="162.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
-      <AnchorPane layoutX="174.0" layoutY="138.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 50;">
-         <children>
-            <Text fx:id="transcription" layoutX="16.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-         </children>
+      <AnchorPane layoutX="337.0" layoutY="162.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
-      <AnchorPane layoutX="334.0" layoutY="138.0" prefHeight="77.0" prefWidth="144.0" style="-fx-background-color: LIGHTGREEN; -fx-background-radius: 50;">
-         <children>
-            <Text fx:id="rus" layoutX="16.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <Button fx:id="leave" layoutX="370.0" layoutY="14.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="50.0" prefWidth="102.0" text="Выход" />
-      <Button fx:id="continueWords" layoutX="128.0" layoutY="253.0" mnemonicParsing="false" onAction="#clickToContinue" prefHeight="35.0" prefWidth="240.0" style="-fx-background-radius: 50;" text="Далее" />
-      <Label fx:id="counter" layoutX="14.0" layoutY="22.0" prefHeight="35.0" prefWidth="83.0" text="1026/1026">
+      <Button fx:id="leave" layoutX="370.0" layoutY="14.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#clickToLeave" prefHeight="35.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/rearchedButtonBG.png&quot;);" text="Назад" textFill="WHITE">
          <font>
-            <Font size="16.0" />
+            <Font name="Arial Bold" size="17.0" />
+         </font></Button>
+      <Label fx:id="counter" layoutX="368.0" layoutY="49.0" prefHeight="35.0" prefWidth="83.0" text="1026/1026" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
          </font>
       </Label>
+      <Text fx:id="eng" fill="WHITE" layoutX="30.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="transcription" fill="WHITE" layoutX="191.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="rus" fill="WHITE" layoutX="353.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="112.13671875">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Text>
+      <Button fx:id="continueWords" layoutX="128.0" layoutY="260.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#clickToContinue" prefHeight="35.0" prefWidth="240.0" style="-fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/rearchedButtonBG.png&quot;); -fx-background-color: transparent;" text="Далее" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect></Button>
    </children>
 </AnchorPane>

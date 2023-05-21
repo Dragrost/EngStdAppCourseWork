@@ -100,7 +100,7 @@ public class adminPanelFormController {
     void clickToCheckAVGProgress(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 249, 320);
+        Scene scene = new Scene(fxmlLoader.load(), 249, 219);
         ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setID(this.ID);
         controllerEditBook.setData("AverageProgress",0,0);

@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="219.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.ProgressInfoFormController">
    <children>
-      <Text fx:id="infoText" layoutX="11.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="232.13671875" />
+      <ImageView fitHeight="219.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/resultBG.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="25.0" layoutY="36.0" prefHeight="107.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+      </AnchorPane>
+      <Text fx:id="infoText" fill="WHITE" layoutX="40.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="167.0">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
