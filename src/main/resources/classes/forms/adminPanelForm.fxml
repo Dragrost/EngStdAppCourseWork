@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -11,27 +13,68 @@
    <children>
       <ImageView fitHeight="565.0" fitWidth="567.0">
          <image>
-            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+            <Image url="@../../Images/adminPanelBG.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="309.0" layoutY="31.0" prefHeight="131.0" prefWidth="177.0" style="-fx-background-color: WHITE; -fx-background-radius: 20;">
-         <children>
-            <Text fx:id="login" layoutX="8.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi," textAlignment="CENTER" wrappingWidth="225.13671875">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Text>
-            <Button fx:id="quit" layoutX="76.0" layoutY="85.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="32.0" prefWidth="83.0" text="Выход" />
-         </children>
+      <AnchorPane layoutX="309.0" layoutY="30.0" prefHeight="131.0" prefWidth="213.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
-      <AnchorPane layoutX="45.0" layoutY="181.0" prefHeight="358.0" prefWidth="478.0" style="-fx-background-color: WHITE; -fx-background-radius: 20;">
-         <children>
-            <Button fx:id="addWord" layoutX="42.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" text="Добавить слово в словарь" />
-            <Button fx:id="addTest" layoutX="42.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" text="Создать тест" />
-            <Button fx:id="delWord" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" text="Удадить слово из словаря" />
-            <Button fx:id="delTest" layoutX="266.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" text="Удалить тест" />
-            <Button fx:id="averageProgress" layoutX="144.0" layoutY="225.0" mnemonicParsing="false" onAction="#clickToCheckAVGProgress" prefHeight="73.0" prefWidth="190.0" text="Посмотреть общий прогресс" />
-         </children>
+      <AnchorPane layoutX="45.0" layoutY="181.0" prefHeight="322.0" prefWidth="478.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
+      <Text fx:id="login" fill="WHITE" layoutX="314.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi," textAlignment="CENTER" wrappingWidth="203.13671875">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button fx:id="quit" layoutX="372.0" layoutY="105.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#clickToLeave" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/rearchedButtonBG.png&quot;);" text="Выход" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
+      <Button fx:id="addWord" layoutX="87.0" layoutY="195.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Добавить слово в словарь" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="addTest" layoutX="87.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Создать тест" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="delWord" layoutX="311.0" layoutY="195.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Удадить слово из словаря" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="delTest" layoutX="311.0" layoutY="295.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Удалить тест" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button fx:id="averageProgress" layoutX="197.0" layoutY="414.0" mnemonicParsing="false" onAction="#clickToCheckAVGProgress" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Посмотреть общий прогресс" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

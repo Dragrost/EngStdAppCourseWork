@@ -5,9 +5,11 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,79 +17,91 @@
    <children>
       <ImageView fitHeight="356.0" fitWidth="600.0">
          <image>
-            <Image url="file:/C:/Davydov_Univer/Java/Other/EngStdApp_CourseWork/Images/BackGround.png" />
+            <Image url="@../../Images/createPanelBG.png" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="43.0" layoutY="24.0" prefHeight="308.0" prefWidth="514.0" style="-fx-background-color: WHITE; -fx-background-radius: 20;">
+      <AnchorPane layoutX="43.0" layoutY="24.0" prefHeight="308.0" prefWidth="514.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 20;">
          <children>
-            <TextField fx:id="quantityElems" alignment="TOP_LEFT" layoutX="256.0" layoutY="19.0" prefHeight="25.0" prefWidth="151.0" promptText="Количество элементов">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="info1" alignment="TOP_LEFT" layoutX="36.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" promptText="English word">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="info2" alignment="TOP_LEFT" layoutX="148.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" promptText="Transkription">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="info3" alignment="TOP_LEFT" layoutX="260.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" promptText="Russian word">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="info4" alignment="TOP_LEFT" layoutX="372.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" promptText="4й вариант ответа">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <Label fx:id="countElemsLabel" layoutX="22.0" layoutY="23.0" prefHeight="17.0" prefWidth="223.0" text="Введите количество элементов">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="questionWord" alignment="TOP_LEFT" layoutX="256.0" layoutY="100.0" prefHeight="25.0" prefWidth="151.0" promptText="Слово">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </TextField>
-            <Label fx:id="typeQuestLabel" layoutX="22.0" layoutY="60.0" prefHeight="17.0" prefWidth="175.0" text="Выберите тип вопроса">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <RadioButton fx:id="eng" layoutX="255.0" layoutY="60.0" mnemonicParsing="false" text="Английский">
-               <toggleGroup>
-                  <ToggleGroup fx:id="group" />
-               </toggleGroup></RadioButton>
-            <RadioButton fx:id="rus" layoutX="255.0" layoutY="77.0" mnemonicParsing="false" text="Русский" toggleGroup="$group" />
-            <Label fx:id="infoLabel" layoutX="22.0" layoutY="146.0" prefHeight="17.0" prefWidth="448.0" text="Введите слова-ответы">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="questionWordLabel" layoutX="22.0" layoutY="104.0" prefHeight="17.0" prefWidth="223.0" text="Введите слово-вопрос">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="inputData" layoutX="298.0" layoutY="223.0" mnemonicParsing="false" onAction="#inputData" prefHeight="71.0" prefWidth="123.0" text="Ввести">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Button>
-            <Button fx:id="quit" layoutX="435.0" layoutY="20.0" mnemonicParsing="false" onAction="#clickToLeave" prefHeight="49.0" prefWidth="65.0" style="-fx-background-color: RED;" text="Выход" />
             <Text fx:id="errorInfo" fill="RED" layoutX="14.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="275.13671875" />
-            <Label fx:id="currentStep" layoutX="432.0" layoutY="73.0" prefHeight="25.0" prefWidth="71.0" text="10/10">
-               <font>
-                  <Font name="Arial Bold" size="15.0" />
-               </font>
-            </Label>
          </children>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
       </AnchorPane>
+      <Label fx:id="countElemsLabel" layoutX="65.0" layoutY="47.0" prefHeight="17.0" prefWidth="223.0" text="Введите количество элементов" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="quantityElems" alignment="TOP_LEFT" layoutX="300.0" layoutY="45.0" prefHeight="25.0" prefWidth="151.0" promptText="Количество элементов" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Label fx:id="typeQuestLabel" layoutX="65.0" layoutY="89.0" prefHeight="17.0" prefWidth="175.0" text="Выберите тип вопроса" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="eng" layoutX="298.0" layoutY="83.0" mnemonicParsing="false" text="Английский" textFill="WHITE">
+         <toggleGroup>
+            <ToggleGroup fx:id="group" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rus" layoutX="298.0" layoutY="101.0" mnemonicParsing="false" text="Русский" textFill="WHITE" toggleGroup="$group" />
+      <Label fx:id="questionWordLabel" layoutX="65.0" layoutY="128.0" prefHeight="17.0" prefWidth="223.0" text="Введите слово-вопрос" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="questionWord" alignment="TOP_LEFT" layoutX="298.0" layoutY="125.0" prefHeight="25.0" prefWidth="151.0" promptText="Слово" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Label fx:id="infoLabel" layoutX="64.0" layoutY="168.0" prefHeight="17.0" prefWidth="448.0" text="Введите слова-ответы" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="info1" alignment="TOP_LEFT" layoutX="81.0" layoutY="208.0" prefHeight="25.0" prefWidth="99.0" promptText="English word" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="info2" alignment="TOP_LEFT" layoutX="193.0" layoutY="208.0" prefHeight="25.0" prefWidth="99.0" promptText="Transkription" style="-fx-text-fill: white; -fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="info3" alignment="TOP_LEFT" layoutX="305.0" layoutY="208.0" prefHeight="25.0" prefWidth="99.0" promptText="Russian word" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="info4" alignment="TOP_LEFT" layoutX="417.0" layoutY="208.0" prefHeight="25.0" prefWidth="99.0" promptText="4й вариант ответа" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 20;">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Button fx:id="inputData" layoutX="420.0" layoutY="250.0" mnemonicParsing="false" onAction="#inputData" prefHeight="64.0" prefWidth="123.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Ввести" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="25.0" />
+         </font>
+      </Button>
+      <Label fx:id="currentStep" layoutX="478.0" layoutY="95.0" prefHeight="25.0" prefWidth="71.0" text="10/10" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="quit" layoutX="478.0" layoutY="37.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#clickToLeave" prefHeight="49.0" prefWidth="65.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttons.png&quot;);" text="Назад" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
