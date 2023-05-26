@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -42,6 +43,17 @@ public class TestFormController {
     @FXML
     private Button secAns;
 
+    @FXML
+    private Button continueTest;
+
+    @FXML
+    private AnchorPane errorPane;
+
+    @FXML
+    private AnchorPane errorPane1;
+
+    @FXML
+    private Text errorWordTest;
     @FXML
     private int MAX_QUESTIONS = 20;
     @FXML
@@ -158,6 +170,8 @@ public class TestFormController {
     }
     @FXML
     private void arrangeAns() {
+        if (currentQuestionNum == 20)
+            currentQuestionNum--;
         questionNumLabel.setText(currentQuestionNum + 1 + "/" + MAX_QUESTIONS);
         if (method.equals("AdminTest"))
             arrangeAdminTestAns();
@@ -171,6 +185,18 @@ public class TestFormController {
         }
         currentQuestionNum++;
     }
+    private void setMode(boolean visible)
+    {
+        errorPane.setVisible(visible);
+        errorPane1.setVisible(visible);
+        errorWordTest.setVisible(visible);
+        continueTest.setVisible(visible);
+
+        firstAns.setDisable(visible);
+        secAns.setDisable(visible);
+        thirdAns.setDisable(visible);
+        fourAns.setDisable(visible);
+    }
     @FXML
     private void checkCorrectAnswersAdmTest(MouseEvent event)
     {
@@ -180,9 +206,17 @@ public class TestFormController {
         if (response.equals("allGood")){
             correctAnswers++;
             correctAnswersWords += words.get(j-6) + "!";
+            arrangeAns();
         }
         else
+        {
+            requestToServer("getWordFromWord," + words.get(j-6));
+            String[] enRuWord = response.split("!");
             incorrectAnswersWords += words.get(j-6) + "!";
+            setMode(true);
+            errorWordTest.setText("Неправильно: " + enRuWord[0] + " - " + enRuWord[1] + '!');
+        }
+
     }
     @FXML
     private void checkCorrectAnswersRandom(MouseEvent event)
@@ -192,9 +226,15 @@ public class TestFormController {
         if ((engWords.indexOf(chosenButtWord) == currentQuestionNum-1) || (rusWords.indexOf(chosenButtWord) == currentQuestionNum-1)) {
             correctAnswers++;
             correctAnswersWords += engWords.get(currentQuestionNum-1) + "!";
+            arrangeAns();
         }
         else
+        {
             incorrectAnswersWords += engWords.get(currentQuestionNum-1) + "!";
+            setMode(true);
+            errorWordTest.setText("Неправильно: " + engWords.get(currentQuestionNum-1) + " - " + rusWords.get(currentQuestionNum-1) + '!');
+        }
+
     }
 
     private void checkTest(MouseEvent event)
@@ -207,6 +247,7 @@ public class TestFormController {
 
     @FXML
     void checkAnswers(MouseEvent event) throws IOException {
+        setMode(false);
         if (currentQuestionNum == MAX_QUESTIONS)
         {
             checkTest(event);
@@ -229,11 +270,14 @@ public class TestFormController {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
+
+        }
+        else if (((Button)event.getSource()).getId().equals("continueTest")){
+            arrangeAns();
         }
         else
         {
             checkTest(event);
-            arrangeAns();
         }
 
     }

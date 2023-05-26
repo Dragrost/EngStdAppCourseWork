@@ -112,10 +112,8 @@ public class LogFormController {
                 communication.writeLine(request);
 
                 String response = communication.readLine();
-                if (response.equals("errorKey"))
-                    errorInput.setText("Данный пользователь не зарегестрирован!");
-                else if (response.equals("wrongPassword"))
-                    errorInput.setText("Введён неверный пароль!");
+                if (response.equals("errorKey") || response.equals("wrongPassword"))
+                    errorInput.setText("Неверный логин / пароль!");
                 else {
                     Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
                     stage.close();
