@@ -64,6 +64,16 @@ public class adminPanelFormController {
         login.setText("Hi, " + getLogin());
     }
 
+    private void openTable() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("tableInfoForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+        TableInfoController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData("GetEngTable");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML
     public void methodOperation(MouseEvent event) throws IOException {
 
@@ -79,8 +89,14 @@ public class adminPanelFormController {
 
         String chosenButtWord = ((Button) event.getSource()).getId();
         switch (chosenButtWord) {
-            case "delWord" -> controllerEditBook.input("DeleteWords");
-            case "delTest" -> controllerEditBook.input("DeleteTest");
+            case "delWord" -> {
+                controllerEditBook.input("DeleteWords");
+                openTable();
+            }
+            case "delTest" -> {
+                controllerEditBook.input("DeleteTest");
+                openTable();
+            }
             case "addWord" -> controllerEditBook.input("AddWords");
             default -> controllerEditBook.input("AddTest");
         }
@@ -99,11 +115,10 @@ public class adminPanelFormController {
     @FXML
     void clickToCheckAVGProgress(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 249, 219);
-        ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
-        controllerEditBook.setID(this.ID);
-        controllerEditBook.setData("AverageProgress",0,0);
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("tableInfoForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+        TableInfoController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData("PersonProgress");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

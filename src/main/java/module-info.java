@@ -10,4 +10,6 @@ module classes.forms {
 
     opens classes.forms to javafx.fxml;
     exports classes.forms;
+    exports info;
+    opens info to javafx.fxml;
 }

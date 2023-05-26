@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane prefHeight="559.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.TableInfoController">
+   <children>
+      <ImageView fitHeight="695.0" fitWidth="567.0">
+         <image>
+            <Image url="@../../Images/BGMain.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="38.0" layoutY="35.0" minHeight="10.0" minWidth="10.0" prefHeight="626.0" prefWidth="491.0" style="-fx-background-color: transparent; -fx-background-color: black; -fx-opacity: 0.5; -fx-background-radius: 50;">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color red="0.1725490242242813" green="0.27843138575553894" blue="0.3686274588108063" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <TableView fx:id="table" layoutX="29.0" layoutY="25.0" prefHeight="571.0" prefWidth="435.0">
+              <columns>
+                  <TableColumn fx:id="tab1" editable="false" prefWidth="118.0" sortable="false" text="ID" />
+                <TableColumn fx:id="tab2" editable="false" prefWidth="159.0" sortable="false" text="C1" />
+                <TableColumn fx:id="tab3" editable="false" prefWidth="159.0" sortable="false" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
