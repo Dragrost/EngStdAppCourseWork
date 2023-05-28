@@ -159,7 +159,7 @@ public class InputDataController {
         stage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 567, 565);
-        adminPanelFormController controllerEditBook = fxmlLoader.getController();
+        AdminPanelFormController controllerEditBook = fxmlLoader.getController();
         controllerEditBook.setData(ID);
         stage.setResizable(false);
         stage.setScene(scene);

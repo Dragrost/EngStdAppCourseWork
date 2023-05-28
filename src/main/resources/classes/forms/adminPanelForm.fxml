@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.adminPanelFormController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classes.forms.AdminPanelFormController">
    <children>
       <ImageView fitHeight="565.0" fitWidth="567.0">
          <image>
@@ -61,7 +61,7 @@
             <Font name="Arial Bold" size="11.0" />
          </font>
       </Button>
-      <Button fx:id="delWord" layoutX="311.0" layoutY="195.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Удадить слово из словаря" textFill="WHITE">
+      <Button fx:id="delWord" layoutX="311.0" layoutY="195.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#methodOperation" prefHeight="73.0" prefWidth="175.0" style="-fx-background-color: transparent; -fx-background-image: url(&quot;file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/adminButtonsBG.png&quot;);" text="Удалить слово из словаря" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="11.0" />
          </font>

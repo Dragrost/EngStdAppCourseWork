@@ -125,7 +125,7 @@ public class LogFormController {
                     {
                         fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
                         scene = new Scene(fxmlLoader.load(), 567, 565);
-                        adminPanelFormController controllerEditBook = fxmlLoader.getController();
+                        AdminPanelFormController controllerEditBook = fxmlLoader.getController();
                         controllerEditBook.setData(getID());
 
                     }

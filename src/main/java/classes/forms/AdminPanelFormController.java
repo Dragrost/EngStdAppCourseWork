@@ -1,9 +1,6 @@
 package classes.forms;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,27 +11,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class adminPanelFormController {
-
-    @FXML
-    private Button averageProgress;
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button addTest;
-
+public class AdminPanelFormController {
     @FXML
     private Button addWord;
 
-    @FXML
-    private Button delTest;
-
-    @FXML
-    private Button delWord;
     @FXML
     private Text login;
 
