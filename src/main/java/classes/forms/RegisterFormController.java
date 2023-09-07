@@ -19,12 +19,6 @@ import javafx.stage.Stage;
 public class RegisterFormController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Button ChangeFormButton;
 
     @FXML
@@ -41,6 +35,11 @@ public class RegisterFormController {
     @FXML
     private Button regButton;
 
+    /**
+     * Перейти к форме входа
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void ClickToChangeForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
@@ -52,42 +51,44 @@ public class RegisterFormController {
         stage.show();
     }
 
+    /**
+     * Регистрация пользователя
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void clickReg(ActionEvent event) throws IOException {
-        if (login.getText().equals(""))
-            errorInput.setText("Заполните поле 'Логин!'");
-        else if (password.getText().equals(""))
-            errorInput.setText("Заполните поле 'Пароль!'");
-        else if (confirmPassword.getText().equals(""))
-            errorInput.setText("Заполните поле 'Повторите пароль!'");
-        else if (!password.getText().equals(confirmPassword.getText()))
+        if (login.getText().equals("") || password.getText().equals("") || confirmPassword.getText().equals("")) {
+            errorInput.setText("Заполните все поля!");
+            return;
+        }
+        if (!password.getText().equals(confirmPassword.getText())) {
             errorInput.setText("Пароли не совпадают!");
-        else
+            return;
+        }
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
         {
-            try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
-            {
-                UUID id = UUID.randomUUID();
-                String request = "Registration," + id + "," + login.getText() +  "," + password.getText();
-                communication.writeLine(request);
+            UUID id = UUID.randomUUID();
+            String request = "Registration," + id + "," + login.getText() +  "," + password.getText();
+            communication.writeLine(request);
 
-                String response = communication.readLine();
-                if (response.equals("errorKey"))
-                    errorInput.setText("Данный пользователь уже существует!");
-                else {
-                    Stage stage = (Stage) regButton.getScene().getWindow();
-                    stage.close();
-                    FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 561, 695);
-                    MainMenuController controllerEditBook = fxmlLoader.getController();
-                    controllerEditBook.setData(String.valueOf(id));
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
-                }
+            String response = communication.readLine();
+            if (response.equals("errorKey"))
+                errorInput.setText("Данный пользователь уже существует!");
+            else {
+                Stage stage = (Stage) regButton.getScene().getWindow();
+                stage.close();
+                FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 561, 695);
+                MainMenuController controllerEditBook = fxmlLoader.getController();
+                controllerEditBook.setData(String.valueOf(id));
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
             }
-            catch (IOException e) {
-                errorInput.setText("Нет соединения с сервером!");
-            }
+        }
+        catch (IOException e) {
+            errorInput.setText("Нет соединения с сервером!");
         }
     }
 

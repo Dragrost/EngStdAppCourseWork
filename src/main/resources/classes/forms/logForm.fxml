@@ -42,7 +42,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </PasswordField>
-            <ImageView fx:id="passSee" fitHeight="25.0" fitWidth="26.0" layoutX="227.0" layoutY="181.0" onMouseClicked="#changePasswordSee" pickOnBounds="true">
+            <ImageView fx:id="passSee" fitHeight="25.0" fitWidth="26.0" layoutX="227.0" layoutY="181.0" onMouseClicked="#changePasswordVisibility" pickOnBounds="true">
                <image>
                   <Image url="@../../Images/eye.png" />
                </image>

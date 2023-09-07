@@ -15,10 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainMenuController {
-
-    @FXML
-    private Button allWords;
-
     @FXML
     private Label areYouSure;
 
@@ -54,6 +50,10 @@ public class MainMenuController {
     @FXML
     private String ID = "";
 
+    /**
+     * Открытие новой тестовой формы с передачей информации об количестве вопросов
+     * @param test
+     */
     private void openTestForm(String test) {
         int MAX_QUESTIONS;
 
@@ -80,6 +80,12 @@ public class MainMenuController {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Отправка запроса
+     * @param request
+     * @return
+     */
     private String sendRequest(String request)
     {
         try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
@@ -95,9 +101,13 @@ public class MainMenuController {
     public void setData(String ID)
     {
         this.ID = ID;
-        this.login.setText(sendRequest("GetLogin," + this.ID));
+        this.login.setText(sendRequest("GetLogin," + ID));
     }
 
+    /**
+     * Выбор номера теста
+     * @param event
+     */
     @FXML
     void adminTests(ActionEvent event) {
         if (testID.getText().equals(""))
@@ -106,16 +116,27 @@ public class MainMenuController {
             testID.setVisible(true);
             testIDLabel.setVisible(true);
             visiblePanel.setVisible(true);
+            return;
         }
-        else
-        {
-            if (Integer.parseInt(testID.getText()) >= 1 && Integer.parseInt(testID.getText()) <= Integer.parseInt(sendRequest("getQuantityWords,mytests")))
-            {
+        try {
+            if (Integer.parseInt(testID.getText()) >= 1 && Integer.parseInt(testID.getText()) <= Integer.parseInt(sendRequest("getQuantityWords,mytests"))) {
                 String request = "AdminTest," + testID.getText();
                 openTestForm(request);
+
             }
+            else
+                testIDLabel.setText("Введите число в диапазоне!");
+        }
+        catch (Exception e){
+            testIDLabel.setText("Введите целое число!");
         }
     }
+
+    /**
+     * Удаление аккаунта
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void deleteAcc(ActionEvent event) throws IOException {
         if (areYouSure.isVisible())
@@ -138,6 +159,12 @@ public class MainMenuController {
 
 
     }
+
+    /**
+     * Открытие формы с прогрессом пользователя
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void checkResult(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -151,6 +178,11 @@ public class MainMenuController {
         stage.show();
     }
 
+    /**
+     * Вернуться к форме входа
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void clickToLeave(ActionEvent event) throws IOException {
         Stage stage = (Stage) leaveButton.getScene().getWindow();
@@ -171,6 +203,11 @@ public class MainMenuController {
         openTestForm("AllQuestions");
     }
 
+    /**
+     * Открытие формы с изучением всех слов
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void researchAllWords(ActionEvent event) throws IOException {
         Stage stage = (Stage) researchWords.getScene().getWindow();

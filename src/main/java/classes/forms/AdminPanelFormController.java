@@ -49,11 +49,17 @@ public class AdminPanelFormController {
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("tableInfoForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 561, 695);
         TableInfoController controllerEditBook = fxmlLoader.getController();
-        controllerEditBook.setData("GetEngTable");
+        controllerEditBook.setTableData("GetEngTable");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * Открытие формы с передачей информации о запросе
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void methodOperation(MouseEvent event) throws IOException {
 
@@ -68,15 +74,12 @@ public class AdminPanelFormController {
         stage.show();
 
         String chosenButtWord = ((Button) event.getSource()).getId();
+        openTable();
         switch (chosenButtWord) {
-            case "delWord" -> {
+            case "delWord" ->
                 controllerEditBook.input("DeleteWords");
-                openTable();
-            }
-            case "delTest" -> {
+            case "delTest" ->
                 controllerEditBook.input("DeleteTest");
-                openTable();
-            }
             case "addWord" -> controllerEditBook.input("AddWords");
             default -> controllerEditBook.input("AddTest");
         }
@@ -98,7 +101,7 @@ public class AdminPanelFormController {
         FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("tableInfoForm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 561, 695);
         TableInfoController controllerEditBook = fxmlLoader.getController();
-        controllerEditBook.setData("PersonProgress");
+        controllerEditBook.setTableData("PersonProgress");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

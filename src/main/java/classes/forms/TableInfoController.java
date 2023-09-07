@@ -4,7 +4,6 @@ import classes.comm.GeneralComm;
 import info.Info;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -13,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class TableInfoController {
 
@@ -29,8 +27,6 @@ public class TableInfoController {
     private TableColumn<Info, String> tab3;
     @FXML
     private TableView<Info> table;
-
-    private String response = "";
     @FXML
     private String requestToServer(String request)
     {
@@ -58,7 +54,12 @@ public class TableInfoController {
             tab3.setText("russian word");
         }
     }
-    public void setData(String request)
+
+    /**
+     * Заполнение таблицы данными
+     * @param request
+     */
+    public void setTableData(String request)
     {
         settings(request);
 
@@ -81,13 +82,6 @@ public class TableInfoController {
         tab1.setCellValueFactory(new PropertyValueFactory<>("ID"));
         tab2.setCellValueFactory(new PropertyValueFactory<>("data1"));
         tab3.setCellValueFactory(new PropertyValueFactory<>("data2"));
-
-       // info = FXCollections.observableArrayList(new Info("1","aboba","bobaboba"),new Info ("IDD", "sdsd", "fdgg"));
-
-        //Info info = new Info("1","aboba","bobaboba");
-
-        //table.getItems().add(info);
-        //table.setItems(info);
     }
 
 }

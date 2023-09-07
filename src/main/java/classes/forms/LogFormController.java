@@ -19,13 +19,7 @@ import javafx.stage.Stage;
 public class LogFormController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
     private Text errorInput;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button ChangeFormButton;
@@ -66,6 +60,12 @@ public class LogFormController {
         }
 
     }
+
+    /**
+     * Изменить форму на регистрационную
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void ClickToChangeForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
@@ -78,8 +78,11 @@ public class LogFormController {
         stage.show();
     }
 
+    /**
+     * Настройка видимоски пароля
+     */
     @FXML
-    void changePasswordSee()
+    void changePasswordVisibility()
     {
         if (passSeeTextField.getText().equals(""))
         {
@@ -91,7 +94,7 @@ public class LogFormController {
         }
         else
         {
-            password.setText(passSeeTextField.getText()); // url("file:/C:/Davydov_Univer/Java/Other/EngStdAppCourseWork/src/main/resources/Images/buttondesign.png")
+            password.setText(passSeeTextField.getText());
             password.setPromptText("Пароль");
             passSeeTextField.toBack();
             passSeeTextField.setText("");
@@ -99,50 +102,56 @@ public class LogFormController {
 
     }
 
+    /**
+     * Вход пользователя
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void clickReg(ActionEvent event) throws IOException {
-        if (login.getText().equals(""))
+        if (login.getText().equals("")) {
             errorInput.setText("Заполните поле 'Логин!'");
-        else if (password.getText().equals(""))
-            errorInput.setText("Заполните поле 'Пароль!'");
-        else {
-            try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000))
-            {
-                String request = "Login," + login.getText() +  "," + password.getText();
-                communication.writeLine(request);
+            return;
+        }
+       if (password.getText().equals("")) {
+           errorInput.setText("Заполните поле 'Пароль!'");
+           return;
+       }
+        try (GeneralComm communication = new GeneralComm("127.0.0.1", 8000)) {
+            String request = "Login," + login.getText() +  "," + password.getText();
+            communication.writeLine(request);
 
-                String response = communication.readLine();
-                if (response.equals("errorKey") || response.equals("wrongPassword"))
-                    errorInput.setText("Неверный логин / пароль!");
-                else {
-                    Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
-                    stage.close();
+            String response = communication.readLine();
+            if (response.equals("errorKey") || response.equals("wrongPassword"))
+                errorInput.setText("Неверный логин / пароль!");
+            else {
+                Stage stage = (Stage) ChangeFormButton.getScene().getWindow();
+                stage.close();
 
-                    FXMLLoader fxmlLoader;
-                    Scene scene;
+                FXMLLoader fxmlLoader;
+                Scene scene;
 
-                    if (isAdmin())
-                    {
-                        fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
-                        scene = new Scene(fxmlLoader.load(), 567, 565);
-                        AdminPanelFormController controllerEditBook = fxmlLoader.getController();
-                        controllerEditBook.setData(getID());
+                if (isAdmin())
+                {
+                    fxmlLoader = new FXMLLoader(StarterForm.class.getResource("adminPanelForm.fxml"));
+                    scene = new Scene(fxmlLoader.load(), 567, 565);
+                    AdminPanelFormController controllerEditBook = fxmlLoader.getController();
+                    controllerEditBook.setData(getID());
 
-                    }
-                    else {
-                        fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
-                        scene = new Scene(fxmlLoader.load(), 561, 695);
-                        MainMenuController controllerEditBook = fxmlLoader.getController();
-                        controllerEditBook.setData(getID());
-                    }
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
                 }
+                else {
+                    fxmlLoader = new FXMLLoader(StarterForm.class.getResource("mainMenuForm.fxml"));
+                    scene = new Scene(fxmlLoader.load(), 561, 695);
+                    MainMenuController controllerEditBook = fxmlLoader.getController();
+                    controllerEditBook.setData(getID());
+                }
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
             }
-            catch (IOException e) {
-                errorInput.setText("Нет соединения с сервером!");
-            }
+        }
+        catch (IOException e) {
+            errorInput.setText("Нет соединения с сервером!");
         }
     }
 

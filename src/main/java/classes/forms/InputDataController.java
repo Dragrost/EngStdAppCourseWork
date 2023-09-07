@@ -56,7 +56,6 @@ public class InputDataController {
 
     @FXML
     private RadioButton rus;
-
     @FXML
     private ToggleGroup group = new ToggleGroup();
     @FXML
@@ -87,7 +86,12 @@ public class InputDataController {
         info3.setText("");
         info4.setText("");
     }
-    private void setVisibleFalse(boolean visible)
+
+    /**
+     * Стандартные настройки видимости
+     * @param visible
+     */
+    private void setVisible(boolean visible)
     {
         typeQuestLabel.setVisible(visible);
         eng.setVisible(visible);
@@ -107,6 +111,11 @@ public class InputDataController {
         quantityElems.setDisable(disable);
         currentStep.setVisible(disable);
     }
+
+    /**
+     * Отображение скрытых элементов
+     * @param info
+     */
     private void settings(String info)
     {
         switch (info){
@@ -128,7 +137,7 @@ public class InputDataController {
                 break;
             }
             default:
-                setVisibleFalse(true);
+                setVisible(true);
                 info1.setPromptText("1й ответ");
                 info2.setPromptText("2й ответ");
                 info3.setPromptText("3й ответ");
@@ -153,6 +162,12 @@ public class InputDataController {
         }
         return response;
     }
+
+    /**
+     * Вернуться в главное меню
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void clickToLeave(ActionEvent event) throws IOException {
         Stage stage = (Stage) quit.getScene().getWindow();
@@ -166,8 +181,13 @@ public class InputDataController {
         stage.show();
     }
 
+    /**
+     * Отображение скрытых элементов - выбранной формы ввода (добавление теста/слов, либо их удаление) с отправкой данных на сервер
+     * @param event
+     */
     @FXML
     void inputData(ActionEvent event) {
+        final int FIRSTMOTION = -1;
         if (currentMotion == 0)
         {
             if (!quantityElems.getText().equals("")) {
@@ -178,15 +198,15 @@ public class InputDataController {
             else
             {
                 errorInfo.setText("Заполните поле 'Количество элементов'");
-                currentMotion = -1;
+                currentMotion = FIRSTMOTION;
             }
         }
 
         else if (String.valueOf(currentMotion).equals(quantityElems.getText()))
         {
             sendData();
-            currentMotion = -1;
-            setVisibleFalse(false);
+            currentMotion = FIRSTMOTION;
+            setVisible(false);
             setDisable(false);
             quantityElems.setText("");
             errorInfo.setText("");
@@ -216,7 +236,7 @@ public class InputDataController {
         assert quit != null : "fx:id=\"quit\" was not injected: check your FXML file 'inputDataForm.fxml'.";
         assert rus != null : "fx:id=\"rus\" was not injected: check your FXML file 'inputDataForm.fxml'.";
         assert typeQuestLabel != null : "fx:id=\"typeQuestLabel\" was not injected: check your FXML file 'inputDataForm.fxml'.";
-        setVisibleFalse(false);
+        setVisible(false);
     }
 
 }

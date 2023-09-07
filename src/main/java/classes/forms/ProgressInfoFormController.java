@@ -11,12 +11,6 @@ import javafx.scene.text.Text;
 public class ProgressInfoFormController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Text infoText;
 
     @FXML
@@ -42,6 +36,13 @@ public class ProgressInfoFormController {
         }
         return response;
     }
+
+    /**
+     * Отображение результата, взависимости от запроса
+     * @param operation
+     * @param correctAnswers
+     * @param maxAnswers
+     */
     @FXML
     public void setData(String operation, int correctAnswers, int maxAnswers)
     {
@@ -56,7 +57,6 @@ public class ProgressInfoFormController {
     void initialize() {
         assert infoText != null : "fx:id=\"infoText\" was not injected: check your FXML file 'progressInfoForm.fxml'.";
         assert returnBack != null : "fx:id=\"returnBack\" was not injected: check your FXML file 'progressInfoForm.fxml'.";
-
     }
 
 }

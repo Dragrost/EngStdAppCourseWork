@@ -1,10 +1,8 @@
 package classes.forms;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ResourceBundle;
 
 import classes.comm.GeneralComm;
 import javafx.event.ActionEvent;
@@ -19,12 +17,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class TestFormController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button firstAns;
@@ -59,8 +51,6 @@ public class TestFormController {
     @FXML
     private int questionWord = 0;
     @FXML
-    private int randomWord = 0;
-    @FXML
     private final ArrayList<String> words = new ArrayList<>();
     private final ArrayList<String> engWords = new ArrayList<>();
     @FXML
@@ -82,6 +72,12 @@ public class TestFormController {
     private String method = "";
     @FXML
     public void setID(String ID) {this.ID = ID;}
+
+    /**
+     * Возврат в главное меню
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void returnToMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) quit.getScene().getWindow();
@@ -95,6 +91,11 @@ public class TestFormController {
         stage.show();
     }
 
+    /**
+     * Получение ID рандомных слов
+     * @param questionWord
+     * @return
+     */
     private int[] getRandomArray(int questionWord)
     {
         final int QUANTITY_ANSWERS = 4;
@@ -113,6 +114,10 @@ public class TestFormController {
         }
         return randWords;
     }
+
+    /**
+     * Расстановка вариантов ответа и слово-вопроса
+     */
     @FXML
     private void arrangeEngWords() {
         int rand = (int) (Math.random() * 4) + 1;
@@ -125,7 +130,6 @@ public class TestFormController {
         thirdAns.setText(rusWords.get(randWords[2]));
         fourAns.setText(rusWords.get(randWords[3]));
 
-        randomWord--;
         switch (rand) {
             case 1 -> firstAns.setText(rusWords.get(questionWord++));
             case 2 -> secAns.setText(rusWords.get(questionWord++));
@@ -134,6 +138,9 @@ public class TestFormController {
         }
     }
 
+    /**
+     * Расстановка вариантов ответа и слово-вопроса
+     */
     @FXML
     private void arrangeRusWords() {
         int rand = (int) (Math.random() * 4) + 1;
@@ -146,7 +153,6 @@ public class TestFormController {
         thirdAns.setText(engWords.get(randWords[2]));
         fourAns.setText(engWords.get(randWords[3]));
 
-        randomWord--;
         switch (rand) {
             case 1 -> firstAns.setText(engWords.get(questionWord++));
             case 2 -> secAns.setText(engWords.get(questionWord++));
@@ -155,7 +161,11 @@ public class TestFormController {
         }
     }
 
+    /**
+     * Расстановка вариантов ответа и слово-вопроса
+     */
     private int j = 0;
+
     private void arrangeAdminTestAns()
     {
         if (words.get(j + 5).equals("Английский"))
@@ -168,9 +178,13 @@ public class TestFormController {
         fourAns.setText(words.get(j++));
         j++;
     }
+
+    /**
+     * Проверка выбора тестов с расстановкой вопросов
+     */
     @FXML
     private void arrangeAns() {
-        if (currentQuestionNum == 20)
+        if (currentQuestionNum == MAX_QUESTIONS)
             currentQuestionNum--;
         questionNumLabel.setText(currentQuestionNum + 1 + "/" + MAX_QUESTIONS);
         if (method.equals("AdminTest"))
@@ -197,8 +211,13 @@ public class TestFormController {
         thirdAns.setDisable(visible);
         fourAns.setDisable(visible);
     }
+
+    /**
+     * Проверка правильности ответа
+     * @param event
+     */
     @FXML
-    private void checkCorrectAnswersAdmTest(MouseEvent event)
+    private void checkCorrectAnswersAdminTest(MouseEvent event)
     {
         String chosenButtWord = ((Button)event.getSource()).getText();
         requestToServer("checkWordsID," + words.get(j-6) + "," + chosenButtWord);
@@ -218,6 +237,11 @@ public class TestFormController {
         }
 
     }
+
+    /**
+     * Проверка правильности ответа
+     * @param event
+     */
     @FXML
     private void checkCorrectAnswersRandom(MouseEvent event)
     {
@@ -240,11 +264,28 @@ public class TestFormController {
     private void checkTest(MouseEvent event)
     {
         if (method.equals("AdminTest"))
-            checkCorrectAnswersAdmTest(event);
+            checkCorrectAnswersAdminTest(event);
         else
             checkCorrectAnswersRandom(event);
     }
 
+    private void openNewForm() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 249, 219);
+        ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
+        controllerEditBook.setData("Test",correctAnswers,MAX_QUESTIONS);
+        controllerEditBook.setID(this.ID);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /**
+     * Проверка ответов
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void checkAnswers(MouseEvent event) throws IOException {
         setMode(false);
@@ -261,25 +302,13 @@ public class TestFormController {
             thirdAns.setDisable(true);
             fourAns.setDisable(true);
 
-            Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(StarterForm.class.getResource("progressInfoForm.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 249, 219);
-            ProgressInfoFormController controllerEditBook = fxmlLoader.getController();
-            controllerEditBook.setData("Test",correctAnswers,MAX_QUESTIONS);
-            controllerEditBook.setID(this.ID);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
-
+            openNewForm();
         }
         else if (((Button)event.getSource()).getId().equals("continueTest")){
             arrangeAns();
         }
         else
-        {
             checkTest(event);
-        }
-
     }
 
     @FXML
